@@ -90,10 +90,16 @@
     <ClCompile Include="Function\Sin.cpp">
       <Filter>ソース ファイル\Function</Filter>
     </ClCompile>
-    <ClCompile Include="Function\Cos.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Function\Function.cpp">
+      <Filter>ソース ファイル\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Function\Fraction.cpp">
+      <Filter>ソース ファイル\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Function\Constant.cpp">
+      <Filter>ソース ファイル\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Function\Cos.cpp">
       <Filter>ソース ファイル\Function</Filter>
     </ClCompile>
   </ItemGroup>
@@ -419,8 +425,14 @@
     <ClInclude Include="Function\Sin.h">
       <Filter>ヘッダー ファイル\Function</Filter>
     </ClInclude>
+    <ClInclude Include="Function\Fraction.h">
+      <Filter>ヘッダー ファイル\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Function\Constant.h">
+      <Filter>ヘッダー ファイル\Function</Filter>
+    </ClInclude>
     <ClInclude Include="Function\Cos.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Function</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -2,12 +2,12 @@
 #include "Function.h"
 
 namespace hanabi {
-	class Cos : public Function
+	class Fraction : public Function
 	{
 	public:
-		Cos() = default;
-		~Cos() override = default;
+		Fraction() = default;
+		~Fraction() override = default;
+
 		double Evaluate(double x) override;
 	};
 }
-
