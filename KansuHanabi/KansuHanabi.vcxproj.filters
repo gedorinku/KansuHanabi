@@ -76,10 +76,25 @@
     <Filter Include="リソース ファイル\Example\Well">
       <UniqueIdentifier>{eb86b9be-05b8-45c6-89c8-f91a5437157c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Function">
+      <UniqueIdentifier>{3efe5f10-4773-4709-8fba-6afa315c5c50}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Function">
+      <UniqueIdentifier>{319e53de-17b4-4163-a7fa-eece8e8ae712}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Function\Sin.cpp">
+      <Filter>ソース ファイル\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Function\Cos.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Function\Function.cpp">
+      <Filter>ソース ファイル\Function</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -275,7 +290,7 @@
     </None>
     <None Include="Engine\Shaders\D3D11\DeferredMesh_Shadow.vs">
       <Filter>リソース ファイル\Engine\Shaders\D3D11</Filter>
-    </None>    
+    </None>
     <None Include="Engine\Shaders\D3D11\DeferredMesh_Textured.ps">
       <Filter>リソース ファイル\Engine\Shaders\D3D11</Filter>
     </None>
@@ -379,7 +394,7 @@
     </Text>
     <Text Include="Example\Shaders\Wave2DPointSprites.hlsl">
       <Filter>リソース ファイル\Example\Shaders</Filter>
-    </Text>   
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <Media Include="Example\Sound.mp3">
@@ -393,5 +408,19 @@
     <Font Include="Example\YomogiFont.ttf">
       <Filter>リソース ファイル\Example</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Function\Function.h">
+      <Filter>ヘッダー ファイル\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Function\Functions.h">
+      <Filter>ヘッダー ファイル\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Function\Sin.h">
+      <Filter>ヘッダー ファイル\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Function\Cos.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
