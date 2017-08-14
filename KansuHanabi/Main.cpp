@@ -39,7 +39,7 @@ void Main()
 	for (double i = -300.0; i < 300.0; i += 0.01)
 	{
 		//dots.emplace_back(Vector2D<double>(300 + i, 250 + sin(1 / (i / 220.0)) * 220.0));
-		dots.emplace_back(Vector2D<double>(300 + i, 250 + fun.Evaluate(i / RATE) * RATE));
+		dots.emplace_back(Vector2D<double>(300 + i, 300 - fun.Evaluate(i / RATE) * RATE));
 	}
 
 	std::vector<std::pair<Circle, Color>> hanabi;
