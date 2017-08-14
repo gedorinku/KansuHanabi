@@ -33,9 +33,9 @@ void Main()
 	std::vector<Vector2D<double>> dots;
 	constexpr double RATE = 100.0;
 	const double INF = pow(10.0, 10.0);
-	auto fun = hanabi::Function::composeEmplace<hanabi::Cos>(hanabi::Cos());
+	auto fun = hanabi::Function::composeEmplace<hanabi::Cos>(hanabi::Sin());
 	//auto fun = hanabi::Sin();
-	//assert(fun.Evaluate(1.0) == std::sin(std::sin(1.0)));
+	assert(fun.Evaluate(1.0) == std::cos(std::sin(1.0)));
 	for (double i = -300.0; i < 300.0; i += 0.01)
 	{
 		//dots.emplace_back(Vector2D<double>(300 + i, 250 + sin(1 / (i / 220.0)) * 220.0));

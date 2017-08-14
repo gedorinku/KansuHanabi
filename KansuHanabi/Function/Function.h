@@ -45,6 +45,8 @@ namespace hanabi {
 		template<class Type, class Head, class... Tail>
 		static Type composeEmplace(Head&& head, Tail&&... tail);
 
+		static Function X;
+
 	protected:
 		std::list<std::shared_ptr<Function>> innerFunctions;
 
@@ -66,7 +68,7 @@ namespace hanabi {
 	Type Function::compose(const Head& head, const Tail&... tail)
 	{
 		auto result = compose<Type>(std::move(tail)...);
-		static_cast<Function>(result)
+		static_cast<Function&>(result)
 			.innerFunctions
 			.push_front(
 				std::make_shared<Head>(head)
@@ -84,7 +86,7 @@ namespace hanabi {
 	Type Function::composeEmplace(Head&& head, Tail&&... tail)
 	{
 		auto result = composeEmplace<Type>(std::move(tail)...);
-		static_cast<Function>(result)
+		static_cast<Function&>(result)
 			.innerFunctions
 			.push_front(
 				std::make_shared<Head>(head)
