@@ -3,39 +3,16 @@
 
 using Function = hanabi::Function;
 
-class Hoge
-{
-public:
-	void print()
-	{
-		LOG(L"aaaa");
-	}
-};
-
-class Fuga
-{
-	Hoge hoge;
-public:
-	Fuga(Hoge&& h) : hoge(h)
-	{
-		
-	}
-
-	void print()
-	{
-		hoge.print();
-	}
-};
-
 void Main()
 {
-	Fuga fuga = Fuga(Hoge());
-	fuga.print();
 	const Font font(30);
 	std::vector<Vector2D<double>> dots;
 	constexpr double RATE = 100.0;
 	const double INF = pow(10.0, 10.0);
-	auto fun = Function::composeEmplace<hanabi::Sin>(Function::composeEmplace<hanabi::Fraction>(hanabi::Constant(1), Function::X));
+	auto fun = Function::composeEmplace<hanabi::Sin>(
+		Function::composeEmplace<hanabi::Fraction>(hanabi::Constant(1), Function::X)
+	);
+	//auto fun = Function::composeEmplace<hanabi::Fraction>(hanabi::Constant(1), Function::X);
 	//auto fun = hanabi::Sin();
 	//assert(fun.Evaluate(1.0) == std::cos(std::sin(1.0)));
 	for (double i = -300.0; i < 300.0; i += 0.01)
