@@ -8,7 +8,7 @@ namespace hanabi {
 	public:
 		Sin() = default;
 		~Sin() override = default;
-		double Evaluate(double x) override;
+		double evaluate(double x) const override;
 	};
 }
 

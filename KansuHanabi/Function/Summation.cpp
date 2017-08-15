@@ -7,13 +7,13 @@ hanabi::Summation::Summation(const Summation& obj)
 {
 }
 
-double hanabi::Summation::Evaluate(double x)
+double hanabi::Summation::evaluate(double x) const
 {
 	assert(2 <= innerFunctions.size());
 	auto result = 0.0;
 	for (auto fun : innerFunctions)
 	{
-		result += fun->Evaluate(x);
+		result += fun->evaluate(x);
 	}
 
 	return result;

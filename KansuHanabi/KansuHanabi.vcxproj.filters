@@ -82,6 +82,12 @@
     <Filter Include="ヘッダー ファイル\Function">
       <UniqueIdentifier>{319e53de-17b4-4163-a7fa-eece8e8ae712}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Graph">
+      <UniqueIdentifier>{b263344e-b5b9-46ac-8e6a-aba9af95f8af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Graph">
+      <UniqueIdentifier>{00589a4e-150e-421e-b601-776065f5e326}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -109,6 +115,12 @@
       <Filter>ソース ファイル</Filter>
     </ClCompile>
     <ClCompile Include="Function\Minus.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph\Graph.cpp">
+      <Filter>ソース ファイル\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph\XYGraph.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -450,6 +462,12 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="Function\Minus.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\Graph.h">
+      <Filter>ヘッダー ファイル\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\XYGraph.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>

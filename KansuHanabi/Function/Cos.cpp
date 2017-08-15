@@ -2,8 +2,8 @@
 #include <cmath>
 
 
-double hanabi::Cos::Evaluate(double x)
+double hanabi::Cos::evaluate(double x) const
 {
-	auto inner = innerFunctions.empty() ? x : innerFunctions.front()->Evaluate(x);
+	auto inner = innerFunctions.empty() ? x : innerFunctions.front()->evaluate(x);
 	return std::cos(inner);
 }

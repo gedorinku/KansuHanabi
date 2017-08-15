@@ -1,6 +1,6 @@
 #include "Function.h"
 
-double hanabi::Function::Evaluate(double x)
+double hanabi::Function::evaluate(double x) const
 {
 	return x;
 }

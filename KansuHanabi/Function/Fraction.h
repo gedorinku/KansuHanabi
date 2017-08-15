@@ -8,6 +8,6 @@ namespace hanabi {
 		Fraction() = default;
 		~Fraction() override = default;
 
-		double Evaluate(double x) override;
+		double evaluate(double x) const override;
 	};
 }

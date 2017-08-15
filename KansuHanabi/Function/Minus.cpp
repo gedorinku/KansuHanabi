@@ -7,8 +7,8 @@ hanabi::Minus::Minus(const Minus& obj)
 {
 }
 
-double hanabi::Minus::Evaluate(double x)
+double hanabi::Minus::evaluate(double x) const
 {
 	assert(1 == innerFunctions.size());
-	return -innerFunctions.front()->Evaluate(x);
+	return -innerFunctions.front()->evaluate(x);
 }

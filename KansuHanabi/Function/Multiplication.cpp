@@ -7,13 +7,13 @@ hanabi::Multiplication::Multiplication(const Multiplication& obj)
 {
 }
 
-double hanabi::Multiplication::Evaluate(double x)
+double hanabi::Multiplication::evaluate(double x) const
 {
 	assert(2 <= innerFunctions.size());
 	auto result = 1.0;
 	for (auto fun : innerFunctions)
 	{
-		result *= fun->Evaluate(x);
+		result *= fun->evaluate(x);
 	}
 
 	return result;

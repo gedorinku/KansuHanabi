@@ -7,7 +7,7 @@ namespace hanabi {
 	public:
 		Cos() = default;
 		~Cos() override = default;
-		double Evaluate(double x) override;
+		double evaluate(double x) const override;
 	};
 }
 

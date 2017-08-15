@@ -170,6 +170,8 @@
     <ClCompile Include="Function\Multiplication.cpp" />
     <ClCompile Include="Function\Sin.cpp" />
     <ClCompile Include="Function\Summation.cpp" />
+    <ClCompile Include="Graph\Graph.cpp" />
+    <ClCompile Include="Graph\XYGraph.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -294,6 +296,8 @@
     <ClInclude Include="Function\Multiplication.h" />
     <ClInclude Include="Function\Sin.h" />
     <ClInclude Include="Function\Summation.h" />
+    <ClInclude Include="Graph\Graph.h" />
+    <ClInclude Include="Graph\XYGraph.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

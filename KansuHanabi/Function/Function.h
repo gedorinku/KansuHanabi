@@ -19,7 +19,7 @@ namespace hanabi {
 		/// <returns>
 		/// ŠÖ”‚Ì’l
 		/// </returns>
-		virtual double Evaluate(double x);
+		virtual double evaluate(double x) const;
 
 		/// <summary>
 		/// ŠÖ”‚ğ‡¬‚µ‚Ü‚·Bsin(f(x))‚Á‚Ä‚È‚éB

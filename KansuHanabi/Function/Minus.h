@@ -10,7 +10,7 @@ namespace hanabi {
 		Minus(const Minus& obj);
 		~Minus() override = default;
 
-		double Evaluate(double x) override;
+		double evaluate(double x) const override;
 	};
 }
 

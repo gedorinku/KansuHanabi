@@ -10,7 +10,7 @@ namespace hanabi {
 		Multiplication(const Multiplication& obj);
 		~Multiplication() override = default;
 
-		double Evaluate(double x) override;
+		double evaluate(double x) const override;
 	};
 }
 

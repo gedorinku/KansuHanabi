@@ -10,7 +10,7 @@ namespace hanabi {
 		Summation(const Summation& obj);
 		~Summation() override = default;
 
-		double Evaluate(double x) override;
+		double evaluate(double x) const override;
 	};
 }
 
