@@ -5,9 +5,9 @@
 hanabi::XYGraph::XYGraph(const Function& function)
 	: function(function)
 {
-	for (auto i = 0; i < 100; ++i)
+	for (auto i = -500; i < 500; ++i)
 	{
-		vertexes.push_back({300.0 + i, 100.0 - function.evaluate(i / 100.0) * 100.0});
+		vertexes.push_back({i, function.evaluate(i / 100.0) * 100.0});
 	}
 }
 
