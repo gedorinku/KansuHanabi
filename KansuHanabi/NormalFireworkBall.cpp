@@ -4,7 +4,7 @@
 
 
 hanabi::NormalFireworkBall::NormalFireworkBall(const s3d::Vec2& start, const s3d::Vec2& end, double time)
-	: flashProbability(EasingController<int>(1000, 0, Easing::Expo, time)),
+	: flashProbability(EasingController<int>(1000, 0, Easing::Expo, time - 3000)),
 		position(EasingController<Vec2>(start, end, Easing::Expo, time)),
 		fired(false), flashStartsAtMillis(0)
 {
