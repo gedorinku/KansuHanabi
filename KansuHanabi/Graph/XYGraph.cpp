@@ -2,13 +2,18 @@
 #include <Siv3D.hpp>
 
 
-hanabi::XYGraph::XYGraph(const Function& function)
-	: function(function)
+hanabi::XYGraph::XYGraph(const Function& function, double minX, double maxX)
+	: function(function), minX(minX), maxX(maxX)
 {
-	for (auto i = -500; i < 500; ++i)
+	for (auto i = minX * 100; i < maxX * 100; ++i)
 	{
-		vertexes.push_back({i, function.evaluate(i / 100.0) * 100.0});
+		vertexes.push_back({i / 100.0, function.evaluate(i / 100.0)});
 	}
+}
+
+hanabi::XYGraph::XYGraph(const XYGraph& obj)
+	: XYGraph(obj.function, obj.minX, obj.maxX)
+{
 }
 
 

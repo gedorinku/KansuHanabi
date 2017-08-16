@@ -1,6 +1,5 @@
 #pragma once
 #include <vector>
-#include <Siv3D/Array.hpp>
 #include "Graph.h"
 #include "../Function/Function.h"
 
@@ -9,7 +8,8 @@ namespace hanabi {
 		public Graph
 	{
 	public:
-		explicit XYGraph(const Function& function);
+		explicit XYGraph(const Function& function, double minX, double maxX);
+		XYGraph(const XYGraph& obj);
 		~XYGraph() override;
 
 		std::vector<s3d::Vector2D<double>> getVertexes() const override;
@@ -21,6 +21,8 @@ namespace hanabi {
 	private:
 		const Function& function;
 		std::vector<s3d::Vector2D<double>> vertexes;
+		double minX;
+		double maxX;
 	};
 }
 

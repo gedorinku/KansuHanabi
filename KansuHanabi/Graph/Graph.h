@@ -7,6 +7,7 @@ namespace hanabi {
 	{
 	public:
 		Graph();
+		Graph(const Graph& obj);
 		virtual ~Graph();
 
 		virtual std::vector<s3d::Vector2D<double>> getVertexes() const = 0;
