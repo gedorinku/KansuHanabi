@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 #include <Siv3D/Array.hpp>
 #include "Graph.h"
 #include "../Function/Function.h"
@@ -11,7 +12,7 @@ namespace hanabi {
 		explicit XYGraph(const Function& function);
 		~XYGraph() override;
 
-		s3d::Array<s3d::Vector2D<double>> getVertexes() const override;
+		std::vector<s3d::Vector2D<double>> getVertexes() const override;
 
 		void draw(const s3d::Color& color = s3d::Palette::White) const override;
 
@@ -19,7 +20,7 @@ namespace hanabi {
 
 	private:
 		const Function& function;
-		s3d::Array<s3d::Vector2D<double>> vertexes;
+		std::vector<s3d::Vector2D<double>> vertexes;
 	};
 }
 

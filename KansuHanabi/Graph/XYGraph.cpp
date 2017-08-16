@@ -16,7 +16,7 @@ hanabi::XYGraph::~XYGraph()
 {
 }
 
-Array<Vec2> hanabi::XYGraph::getVertexes() const
+std::vector<Vec2> hanabi::XYGraph::getVertexes() const
 {
 	return vertexes;
 }
