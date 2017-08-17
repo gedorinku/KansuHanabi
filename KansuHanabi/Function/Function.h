@@ -7,7 +7,7 @@ namespace hanabi {
 	{
 	public:
 		Function() = default;
-		Function(const Function& function) : innerFunctions(function.innerFunctions) {};
+		Function(const Function& function);
 		virtual ~Function() = default;
 
 		/// <summary>

@@ -17,6 +17,8 @@ hanabi::NormalFireworkBall::~NormalFireworkBall()
 
 void hanabi::NormalFireworkBall::draw()
 {
+	if (position.isEnd()) return;
+
 	if (!fired)
 	{
 		fired = true;

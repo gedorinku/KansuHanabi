@@ -7,6 +7,12 @@ hanabi::Multiplication::Multiplication(const Multiplication& obj)
 {
 }
 
+hanabi::Multiplication::Multiplication(const Function & function1, const Function & function2)
+{
+	innerFunctions.emplace_back(std::make_shared<Function>(function1));
+	innerFunctions.emplace_back(std::make_shared<Function>(function2));
+}
+
 double hanabi::Multiplication::evaluate(double x) const
 {
 	assert(2 <= innerFunctions.size());

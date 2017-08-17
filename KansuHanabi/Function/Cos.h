@@ -6,6 +6,7 @@ namespace hanabi {
 	{
 	public:
 		Cos() = default;
+		Cos(const Cos& obj);
 		~Cos() override = default;
 		double evaluate(double x) const override;
 	};

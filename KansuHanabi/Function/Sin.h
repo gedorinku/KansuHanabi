@@ -7,6 +7,7 @@ namespace hanabi {
 	{
 	public:
 		Sin() = default;
+		Sin(const Sin& obj);
 		~Sin() override = default;
 		double evaluate(double x) const override;
 	};

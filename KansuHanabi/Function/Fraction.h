@@ -6,6 +6,7 @@ namespace hanabi {
 	{
 	public:
 		Fraction() = default;
+		Fraction(const Function& numerator, const Function& denominator);
 		~Fraction() override = default;
 
 		double evaluate(double x) const override;

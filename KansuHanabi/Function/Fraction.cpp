@@ -1,6 +1,13 @@
-#include "Fraction.h"
+#include <memory>
 #include <assert.h>
+#include "Fraction.h"
 
+
+hanabi::Fraction::Fraction(const Function & numerator, const Function & denominator)
+{
+	innerFunctions.emplace_back(std::make_shared<Function>(numerator));
+	innerFunctions.emplace_back(std::make_shared<Function>(denominator));
+}
 
 double hanabi::Fraction::evaluate(double x) const
 {
