@@ -1,6 +1,6 @@
-﻿# include <Siv3D.hpp>
-# include "Function/Functions.h"
-# include "NormalFirework.h"
+﻿#include <Siv3D.hpp>
+#include "Function/Functions.h"
+#include "NormalFirework.h"
 #include "Graph/XYGraph.h"
 
 void Main()
