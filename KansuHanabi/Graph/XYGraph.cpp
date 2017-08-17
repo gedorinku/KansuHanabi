@@ -1,13 +1,13 @@
-#include "XYGraph.h"
 #include <Siv3D.hpp>
+#include "XYGraph.h"
 
 
 hanabi::XYGraph::XYGraph(const Function& function, double minX, double maxX)
 	: function(function), minX(minX), maxX(maxX)
 {
-	for (auto i = minX * 100; i < maxX * 100; ++i)
+	for (auto i = minX * 100.0; i < maxX * 100.0; i += 1.0)
 	{
-		vertexes.push_back({i / 100.0, function.evaluate(i / 100.0)});
+		vertexes.emplace_back(Vec2{i / 100.0, -function.evaluate(i / 100.0)});
 	}
 }
 
