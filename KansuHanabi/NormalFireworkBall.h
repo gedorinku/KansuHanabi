@@ -1,6 +1,8 @@
 #pragma once
+#include <deque>
 #include <Siv3D/EasingController.hpp>
 #include <Siv3D/Vector2D.hpp>
+#include "TrajectoryParticle.h"
 
 namespace hanabi {
 	class NormalFireworkBall
@@ -18,6 +20,8 @@ namespace hanabi {
 		bool fired;
 		long flashStartsAtMillis;
 		long firedAtMillis;
+		std::deque<TrajectoryParticle> trajectory;
+		long lastParticleMillis;
 	};
 }
 

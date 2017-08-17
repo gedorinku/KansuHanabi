@@ -135,6 +135,9 @@
     <ClCompile Include="Graph\PolarCoordinatesGraph.cpp">
       <Filter>ソース ファイル\Graph</Filter>
     </ClCompile>
+    <ClCompile Include="TrajectoryParticle.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -493,6 +496,9 @@
     </ClInclude>
     <ClInclude Include="Graph\PolarCoordinatesGraph.h">
       <Filter>ヘッダー ファイル\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="TrajectoryParticle.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

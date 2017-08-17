@@ -177,6 +177,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NormalFirework.cpp" />
     <ClCompile Include="NormalFireworkBall.cpp" />
+    <ClCompile Include="TrajectoryParticle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
@@ -306,6 +307,7 @@
     <ClInclude Include="Graph\XYGraph.h" />
     <ClInclude Include="NormalFirework.h" />
     <ClInclude Include="NormalFireworkBall.h" />
+    <ClInclude Include="TrajectoryParticle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

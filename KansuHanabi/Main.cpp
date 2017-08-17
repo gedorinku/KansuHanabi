@@ -34,8 +34,8 @@ void Main()
 		if (Input::MouseL.clicked) {
 			//auto index = 3;
 			auto index = Random(0, ((int) functions.size()) - 1);
-			//fireworks.emplace_back(hanabi::NormalFirework(hanabi::XYGraph(*(functions[index]), -5.0, 5.0), Mouse::Pos(), 50));
-			fireworks.emplace_back(hanabi::NormalFirework(hanabi::PolarCoordinatesGraph(*(functions[index]), -10.0 * Pi, 10.0 * Pi, 300.0), Mouse::Pos(), 200));
+			fireworks.emplace_back(hanabi::NormalFirework(hanabi::XYGraph(*(functions[index]), -5.0, 5.0), Mouse::Pos(), 50));
+			//fireworks.emplace_back(hanabi::NormalFirework(hanabi::PolarCoordinatesGraph(*(functions[index]), -10.0 * Pi, 10.0 * Pi, 300.0), Mouse::Pos(), 200));
 		}
 
 		for (auto& firework : fireworks) {
