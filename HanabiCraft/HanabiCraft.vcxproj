@@ -117,6 +117,7 @@
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AssemblerListingLocation>$(IntDir)%(RelativeDir)</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <AdditionalIncludeDirectories>C:\Users\winG3\Source\Repos\KansuHanabi\HanabiCraft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -157,6 +158,7 @@
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <AssemblerListingLocation>$(IntDir)%(RelativeDir)</AssemblerListingLocation>
       <ObjectFileName>$(IntDir)%(RelativeDir)</ObjectFileName>
+      <AdditionalIncludeDirectories>C:\Users\winG3\Source\Repos\KansuHanabi\HanabiCraft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -167,6 +169,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BombViewer\BombViewer.cpp" />
+    <ClCompile Include="BombViewer\OneArgumentPowder.cpp" />
+    <ClCompile Include="BombViewer\SomeArgumentPowder.cpp" />
     <ClCompile Include="Coordinates2D.cpp" />
     <ClCompile Include="BombViewer\GunPowder.cpp" />
     <ClCompile Include="Function\Function.cpp" />
@@ -288,6 +292,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BombViewer\BombViewer.h" />
+    <ClInclude Include="BombViewer\OneArgumentPowder.h" />
+    <ClInclude Include="BombViewer\SomeArgumentPowder.h" />
     <ClInclude Include="Coordinates2D.h" />
     <ClInclude Include="BombViewer\GunPowder.h" />
     <ClInclude Include="Function\Function.h" />

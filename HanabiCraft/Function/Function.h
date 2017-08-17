@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include "BombViewer\GunPowder.h"
 
 namespace HanabiCraft {
 namespace Function {
@@ -12,7 +13,8 @@ protected:
 public:
 	Function(const std::vector<Function> &children);
 	double Eval(double x);
-
+	virtual const BombViewer::GunPowder& ToGunPowder() = 0;
+	const std::vector<Function>& GetChildren();
 };
 
 
