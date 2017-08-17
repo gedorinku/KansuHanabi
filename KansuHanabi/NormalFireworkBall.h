@@ -14,8 +14,10 @@ namespace hanabi {
 	private:
 		s3d::EasingController<int> flashProbability;
 		s3d::EasingController<s3d::Vec2> position;
+		s3d::EasingController<double> hue;
 		bool fired;
 		long flashStartsAtMillis;
+		long firedAtMillis;
 	};
 }
 
