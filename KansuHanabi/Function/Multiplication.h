@@ -8,10 +8,18 @@ namespace hanabi {
 	public:
 		Multiplication() = default;
 		Multiplication(const Multiplication& obj);
-		Multiplication(const Function& function1, const Function& function2);
+		template <class Type1, class Type2>
+		Multiplication(const Type1& function1, const Type2& function2);
 		~Multiplication() override = default;
 
 		double evaluate(double x) const override;
 	};
+
+	template <class Type1, class Type2>
+	inline Multiplication::Multiplication(const Type1 & function1, const Type2 & function2)
+	{
+		innerFunctions.emplace_back(std::make_shared<Type1>(function1));
+		innerFunctions.emplace_back(std::make_shared<Type2>(function2));
+	}
 }
 
