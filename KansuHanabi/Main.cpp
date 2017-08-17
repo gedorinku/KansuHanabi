@@ -17,7 +17,7 @@ void Main()
 		new hanabi::Fraction(hanabi::Constant(1.0), hanabi::Function::X),
 		new hanabi::Fraction(hanabi::Sin(), hanabi::Cos()),
 		new hanabi::Sin(hanabi::Function::composeEmplace<hanabi::Sin>(
-			hanabi::Fraction(hanabi::Constant(1.0), hanabi::Multiplication(hanabi::Function::X, hanabi::Constant(0.01)))
+			hanabi::Fraction(hanabi::Constant(1.0), hanabi::Function::X)
 		))
 	};
 	//const std::vector<std::unique_ptr<hanabi::Function>> functions = {
@@ -29,7 +29,7 @@ void Main()
 	while (System::Update())
 	{
 		if (Input::MouseL.clicked) {
-			//auto index = 4;
+			//auto index = 3;
 			auto index = Random(0, ((int) functions.size()) - 1);
 			fireworks.emplace_back(hanabi::NormalFirework(hanabi::XYGraph(*(functions[index]), -5.0, 5.0), Mouse::Pos(), 50));
 		}
