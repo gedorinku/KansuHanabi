@@ -5,6 +5,7 @@
 #include "NormalFirework.h"
 #include "Graph/XYGraph.h"
 #include "Graph/PolarCoordinatesGraph.h"
+#include "FireworkBall.h"
 
 void Main()
 {
@@ -21,25 +22,32 @@ void Main()
 			hanabi::Fraction(hanabi::Constant(1.0), hanabi::Function::X)
 		))
 	};
-	//const std::vector<std::unique_ptr<hanabi::Function>> functions = {
-	//	std::make_unique<hanabi::Function>(hanabi::Cos()),
-	//	std::make_unique<hanabi::Function>(hanabi::Sin())//,
-	//	//std::make_unique<hanabi::Fraction>(hanabi::Function::composeEmplace<hanabi::Fraction>(hanabi::Constant(1.0), hanabi::Function::X))
-	//};
-	std::vector<hanabi::NormalFirework> fireworks;
+	std::list<hanabi::FireworkBall> balls;
 	auto hoge = hanabi::PolarCoordinatesGraph(*functions[4], -2.0 * Pi, 2.0 * Pi, 300.0);
 	while (System::Update())
 	{
 		hoge.draw();
 		if (Input::MouseL.clicked) {
-			//auto index = 3;
 			auto index = Random(0, ((int) functions.size()) - 1);
-			fireworks.emplace_back(hanabi::NormalFirework(hanabi::XYGraph(*(functions[index]), -5.0, 5.0), Mouse::Pos(), 50));
-			//fireworks.emplace_back(hanabi::NormalFirework(hanabi::PolarCoordinatesGraph(*(functions[index]), -10.0 * Pi, 10.0 * Pi, 300.0), Mouse::Pos(), 200));
+			auto firework = hanabi::NormalFirework(hanabi::XYGraph(*(functions[index]), -5.0, 5.0), Mouse::Pos(), 50);
+			balls.emplace_back(firework, Vec2{ Mouse::Pos().x, 600 }, Mouse::Pos());
 		}
 
-		for (auto& firework : fireworks) {
-			firework.draw();
+		for (auto& ball : balls) {
+			ball.draw();
+		}
+
+		for (auto it = balls.begin(); it != balls.end();)
+		{
+			if (it->isAlive())
+			{
+				it++;
+				continue;
+			}
+
+			auto temp = it;
+			it++;
+			balls.erase(temp);
 		}
 
 		font(Profiler::FPS(), L"fps").draw();

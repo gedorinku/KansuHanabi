@@ -34,7 +34,7 @@ bool hanabi::TrajectoryParticle::draw(const s3d::Color color)
 	return true;
 }
 
-bool hanabi::TrajectoryParticle::isAlive()
+bool hanabi::TrajectoryParticle::isAlive() const
 {
 	return Time::GetMillisec64() - createdAtMillis <= lifeTime;
 }

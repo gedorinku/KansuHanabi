@@ -56,3 +56,8 @@ void hanabi::NormalFireworkParticle::draw()
 
 	Circle(nextPosition, 1.0).draw(HSV(hue.easeOut(), 0.9, 1.0));
 }
+
+bool hanabi::NormalFireworkParticle::isAlive() const
+{
+	return !position.isEnd();
+}

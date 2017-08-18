@@ -163,6 +163,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Firework.cpp" />
+    <ClCompile Include="FireworkBall.cpp" />
     <ClCompile Include="Function\Constant.cpp" />
     <ClCompile Include="Function\Cos.cpp" />
     <ClCompile Include="Function\Fraction.cpp" />
@@ -293,6 +294,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Firework.h" />
+    <ClInclude Include="FireworkBall.h" />
     <ClInclude Include="Function\Constant.h" />
     <ClInclude Include="Function\Cos.h" />
     <ClInclude Include="Function\Fraction.h" />

@@ -3,6 +3,11 @@
 #include "NormalFirework.h"
 
 
+hanabi::NormalFirework::NormalFirework(const NormalFirework& obj)
+	: Firework(obj), balls(obj.balls)
+{
+}
+
 hanabi::NormalFirework::NormalFirework(const Graph& graph, double x, double y, double size)
 	: NormalFirework(graph, { x, y }, size)
 {
@@ -35,4 +40,14 @@ void hanabi::NormalFirework::draw()
 		ball.draw();
 	}
 	Graphics2D::SetBlendState(BlendState::Default);
+}
+
+bool hanabi::NormalFirework::isAlive() const
+{
+	bool result = false;
+	for (auto& ball : balls)
+	{
+		result |= ball.isAlive();
+	}
+	return result;
 }

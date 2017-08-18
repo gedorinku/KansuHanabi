@@ -13,7 +13,7 @@ namespace hanabi {
 
 		bool draw(const s3d::Color color = Palette::Orange);
 
-		bool isAlive();
+		bool isAlive() const;
 
 	private:
 		s3d::Vec2 position;

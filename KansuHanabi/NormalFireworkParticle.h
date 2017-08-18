@@ -13,6 +13,8 @@ namespace hanabi {
 
 		void draw();
 
+		bool isAlive() const;
+
 	private:
 		s3d::EasingController<int> flashProbability;
 		s3d::EasingController<s3d::Vec2> position;
