@@ -1,9 +1,9 @@
 #include <Siv3D.hpp>
-#include "NormalFireworkBall.h"
+#include "NormalFireworkParticle.h"
 
 
 
-hanabi::NormalFireworkBall::NormalFireworkBall(const s3d::Vec2& start, const s3d::Vec2& end, double time)
+hanabi::NormalFireworkParticle::NormalFireworkParticle(const s3d::Vec2& start, const s3d::Vec2& end, double time)
 	: flashProbability(EasingController<int>(500, 0, Easing::Expo, time / 2.0)),
 		position(EasingController<Vec2>(start, end, Easing::Expo, time)),
 		hue(EasingController<double>(0.0, 360.0, Easing::Linear, time)),
@@ -14,11 +14,11 @@ hanabi::NormalFireworkBall::NormalFireworkBall(const s3d::Vec2& start, const s3d
 {
 }
 
-hanabi::NormalFireworkBall::~NormalFireworkBall()
+hanabi::NormalFireworkParticle::~NormalFireworkParticle()
 {
 }
 
-void hanabi::NormalFireworkBall::draw()
+void hanabi::NormalFireworkParticle::draw()
 {
 	if (position.isEnd()) return;
 

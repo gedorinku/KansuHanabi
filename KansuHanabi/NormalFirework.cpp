@@ -19,7 +19,7 @@ hanabi::NormalFirework::NormalFirework(const Graph& graph, const s3d::Vec2& posi
 	for (auto i = 0; i < vertexes.size(); i += std::max(vertexes.size() / 100, (unsigned int) 1))
 	{
 		auto noise = RandomVec2(length(mt));
-		balls.emplace_back(NormalFireworkBall(position, position + vertexes[i] * size + noise, time));
+		balls.emplace_back(NormalFireworkParticle(position, position + vertexes[i] * size + noise, time));
 	}
 }
 

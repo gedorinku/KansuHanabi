@@ -1,7 +1,7 @@
 #pragma once
 #include "Firework.h"
 #include "Graph/Graph.h"
-#include "NormalFireworkBall.h"
+#include "NormalFireworkParticle.h"
 
 namespace hanabi {
 	class NormalFirework
@@ -15,7 +15,7 @@ namespace hanabi {
 		void draw() override;
 
 	private:
-		std::vector<NormalFireworkBall> balls;
+		std::vector<NormalFireworkParticle> balls;
 	};
 }
 

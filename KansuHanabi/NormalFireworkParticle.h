@@ -5,11 +5,11 @@
 #include "TrajectoryParticle.h"
 
 namespace hanabi {
-	class NormalFireworkBall
+	class NormalFireworkParticle
 	{
 	public:
-		NormalFireworkBall(const s3d::Vec2& start, const s3d::Vec2& end, double time);
-		~NormalFireworkBall();
+		NormalFireworkParticle(const s3d::Vec2& start, const s3d::Vec2& end, double time);
+		~NormalFireworkParticle();
 
 		void draw();
 
