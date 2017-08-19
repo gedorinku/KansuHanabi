@@ -15,3 +15,8 @@ hanabi::Graph::~Graph()
 {
 }
 
+double hanabi::Graph::getDeltaX() const
+{
+	return deltaX;
+}
+

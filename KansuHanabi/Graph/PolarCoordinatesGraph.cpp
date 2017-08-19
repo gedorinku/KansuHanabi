@@ -8,6 +8,7 @@ hanabi::PolarCoordinatesGraph::PolarCoordinatesGraph(const Function& function, d
 	: function(function), minTheta(minTheta), maxTheta(maxTheta), maxR(maxR)
 {
 	constexpr auto rate = 100.0;
+	deltaX = 1.0 / rate;
 	for (auto theta = minTheta * rate; theta < maxTheta * rate; theta += 1.0)
 	{
 		const auto r = function.evaluate(theta / rate);

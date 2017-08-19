@@ -1,3 +1,4 @@
+#include <cmath>
 #include <Siv3D.hpp>
 #include "XYGraph.h"
 
@@ -5,9 +6,14 @@
 hanabi::XYGraph::XYGraph(const Function& function, double minX, double maxX)
 	: function(function), minX(minX), maxX(maxX)
 {
-	for (auto i = minX * 100.0; i < maxX * 100.0; i += 1.0)
+	const auto maxY = std::max(std::abs(minX), std::abs(maxX));
+	constexpr auto rate = 100.0;
+	deltaX = 1.0 / rate;
+	for (auto i = minX * rate; i < maxX * rate; i += 1.0)
 	{
-		vertexes.emplace_back(Vec2{i / 100.0, -function.evaluate(i / 100.0)});
+		const auto y = -function.evaluate(i / rate);
+		if (maxY < std::abs(y)) continue;
+		vertexes.emplace_back(Vec2{i / rate, y});
 	}
 }
 

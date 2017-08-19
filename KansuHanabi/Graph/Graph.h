@@ -15,6 +15,11 @@ namespace hanabi {
 		virtual void draw(const s3d::Color& color = s3d::Palette::White) const = 0;
 
 		virtual void draw(double thickness, const s3d::Color& color = s3d::Palette::White) const = 0;
+
+		double getDeltaX() const;
+
+	protected:
+		double deltaX;
 	};
 }
 
