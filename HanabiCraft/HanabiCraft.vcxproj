@@ -168,12 +168,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BombViewer\BombViewer.cpp" />
-    <ClCompile Include="BombViewer\OneArgumentPowder.cpp" />
-    <ClCompile Include="BombViewer\SomeArgumentPowder.cpp" />
     <ClCompile Include="Coordinates2D.cpp" />
-    <ClCompile Include="BombViewer\GunPowder.cpp" />
-    <ClCompile Include="Function\Function.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scale2D.cpp" />
     <ClCompile Include="Basis2D.cpp" />
@@ -291,14 +286,10 @@
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BombViewer\BombViewer.h" />
-    <ClInclude Include="BombViewer\OneArgumentPowder.h" />
-    <ClInclude Include="BombViewer\SomeArgumentPowder.h" />
     <ClInclude Include="Coordinates2D.h" />
-    <ClInclude Include="BombViewer\GunPowder.h" />
-    <ClInclude Include="Function\Function.h" />
     <ClInclude Include="Scale2D.h" />
     <ClInclude Include="Basis2D.h" />
+    <ClInclude Include="Util.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
