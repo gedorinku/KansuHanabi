@@ -168,7 +168,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="BombViewer\GunPowder.cpp" />
+    <ClCompile Include="BombViewer\OneArgPowder.cpp" />
+    <ClCompile Include="BombViewer\PowderBuilder.cpp" />
     <ClCompile Include="Coordinates2D.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scale2D.cpp" />
@@ -287,13 +288,14 @@
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="BombViewer\GunPowder.h" />
+    <ClInclude Include="BombViewer\IGunPowder.h" />
+    <ClInclude Include="BombViewer\OneArgPowder.h" />
+    <ClInclude Include="BombViewer\PowderBuilder.h" />
+    <ClInclude Include="BombViewer\TwoArgPowder.h" />
     <ClInclude Include="Coordinates2D.h" />
-    <ClInclude Include="Function\LeafX.h" />
-    <ClInclude Include="Function\OneArgumentFunction.h" />
     <ClInclude Include="Function\IFunction.h" />
-    <ClInclude Include="Function\Parent.h" />
-    <ClInclude Include="Function\Sin.h" />
+    <ClInclude Include="Function\IOneArgFunction.h" />
+    <ClInclude Include="Function\LeafX.h" />
     <ClInclude Include="Scale2D.h" />
     <ClInclude Include="Basis2D.h" />
     <ClInclude Include="Util.h" />
