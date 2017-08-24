@@ -17,7 +17,7 @@ public:
 
 	PowderBuilder(SP<IFunction> function);
 
-	SP<IGunPowder> Build();
+	SP<IGunPowder> Build(const Vec2 &pos, double r);
 };
 
 

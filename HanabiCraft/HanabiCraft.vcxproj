@@ -168,6 +168,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BombViewer\LeafXPowder.cpp" />
     <ClCompile Include="BombViewer\OneArgPowder.cpp" />
     <ClCompile Include="BombViewer\PowderBuilder.cpp" />
     <ClCompile Include="Coordinates2D.cpp" />
@@ -289,6 +290,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BombViewer\IGunPowder.h" />
+    <ClInclude Include="BombViewer\LeafXPowder.h" />
     <ClInclude Include="BombViewer\OneArgPowder.h" />
     <ClInclude Include="BombViewer\PowderBuilder.h" />
     <ClInclude Include="BombViewer\TwoArgPowder.h" />
@@ -296,6 +298,7 @@
     <ClInclude Include="Function\IFunction.h" />
     <ClInclude Include="Function\IOneArgFunction.h" />
     <ClInclude Include="Function\LeafX.h" />
+    <ClInclude Include="Function\Sin.h" />
     <ClInclude Include="Scale2D.h" />
     <ClInclude Include="Basis2D.h" />
     <ClInclude Include="Util.h" />

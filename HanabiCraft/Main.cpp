@@ -6,21 +6,34 @@
 #include "Util.h"
 #include "Function\Sin.h"
 #include "Function\LeafX.h"
+#include "BombViewer\OneArgPowder.h"
+#include "BombViewer\LeafXPowder.h"
+#include "BombViewer\IGunPowder.h"
+#include "BombViewer\PowderBuilder.h"
 using namespace HanabiCraft;
 
 void Main() {
 	enum Mode {
 		JustRun,
-		Function_PoyoTest
-	} mode = Mode::Function_PoyoTest;
+		Function_PoyoTest,
+		BombViewer_PoyoTest
+	} mode = Mode::BombViewer_PoyoTest;
 
 	if (mode == JustRun) {
 	}
 	else if (mode == Function_PoyoTest) {
 		using namespace Function;
 		Console::Open();
-		SP<LeafX> p(new LeafX());
-		SP<IFunction> q = p;
-		printf("%f\n", Function::Sin<>(q).Eval(M_PI*3/2));
+		printf("%f\n", Function::Sin(SP<IFunction>(new LeafX())).Eval(M_PI*3/2));
+	} 
+	else if (mode == BombViewer_PoyoTest) {
+		using namespace BombViewer;
+		using namespace Function;
+		SP<IFunction> f(new Function::Sin(SP<IFunction>(new LeafX())));
+		SP<IGunPowder> p(BombViewer::PowderBuilder(f).Build(Vec2(Window::Width()/2.0, Window::Height()/2.0), 100));
+		while (System::Update()) {
+			p->Update();
+		}
 	}
+	return;
 }
