@@ -12,6 +12,7 @@
 #include "BombViewer\PowderBuilder.h"
 #include "Graph\GraphManager.h"
 #include "Graph\GraphManager.h"
+#include "TmpClass.h"
 using namespace HanabiCraft;
 
 void Main() {
@@ -54,6 +55,7 @@ void Main() {
 		while (System::Update()) {
 			v->Update();
 		}
+		TmpClass t; t.Hoge();
 	}
 	return;
 }

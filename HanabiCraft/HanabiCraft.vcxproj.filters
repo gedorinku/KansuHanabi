@@ -348,11 +348,17 @@
     <None Include="Function\AbstractFunction.h">
       <Filter>ヘッダー ファイル</Filter>
     </None>
-    <None Include="Graph\GraphManager.cpp">
-      <Filter>ソース ファイル</Filter>
-    </None>
     <None Include="Graph\GraphManager.h">
       <Filter>ヘッダー ファイル</Filter>
+    </None>
+    <None Include="TmpClass.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </None>
+    <None Include="TmpClass.cpp">
+      <Filter>ソース ファイル</Filter>
+    </None>
+    <None Include="Graph\GraphManager.cpp">
+      <Filter>ソース ファイル</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

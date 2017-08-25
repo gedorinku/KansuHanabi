@@ -11,7 +11,7 @@ GraphManager::GraphManager(double x,
 						   SP<Function::AbstractFunction> function)
 	: x(x), y(y), width(width), height(height)
 	, graph(new Graph(x + margin, y + margin, width - margin, height - margin, function)) {
-	
+
 }
 
 void GraphManager::Update() {
