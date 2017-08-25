@@ -5,17 +5,17 @@ namespace BombViewer {
 
 void LeafXPowder::Update() {}
 
-std::vector<SP<Function::IFunction>> LeafXPowder::GetChildren() {
-	return std::vector<SP<IFunction>>();
+std::vector<SP<Function::AbstractFunction>> LeafXPowder::GetChildren() {
+	return std::vector<SP<AbstractFunction>>();
 }
 
-void LeafXPowder::SetChilren(const std::vector<SP<IFunction>>& children) {}
+void LeafXPowder::SetChilren(const std::vector<SP<AbstractFunction>>& children) {}
 
-SP<Function::IFunction> LeafXPowder::Clone(const std::vector<SP<IFunction>>& newChildren) {
-	return SP<IFunction>();
+SP<Function::AbstractFunction> LeafXPowder::Clone(const std::vector<SP<AbstractFunction>>& newChildren) {
+	return SP<AbstractFunction>();
 }
 
-double HanabiCraft::BombViewer::LeafXPowder::Eval(double x) {
+double HanabiCraft::BombViewer::LeafXPowder::WeakEval(double x) {
 	return x;
 }
 

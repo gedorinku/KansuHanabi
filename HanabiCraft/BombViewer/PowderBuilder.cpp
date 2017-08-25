@@ -10,7 +10,7 @@ namespace HanabiCraft {
 namespace BombViewer {
 
 
-PowderBuilder::PowderBuilder(SP<IFunction> function) : function(function) {}
+PowderBuilder::PowderBuilder(SP<AbstractFunction> function) : function(function) {}
 
 //TODO: イカした設計とコード #とは
 SP<IGunPowder> PowderBuilder::Build(const Vec2 &pos, double r) {

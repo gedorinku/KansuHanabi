@@ -172,6 +172,7 @@
     <ClCompile Include="BombViewer\OneArgPowder.cpp" />
     <ClCompile Include="BombViewer\PowderBuilder.cpp" />
     <ClCompile Include="Coordinates2D.cpp" />
+    <ClCompile Include="Graph\Graph.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scale2D.cpp" />
     <ClCompile Include="Basis2D.cpp" />
@@ -260,6 +261,7 @@
     <None Include="Example\Test.json" />
     <None Include="Example\Well\Well.mtl" />
     <None Include="Example\Well\Well.wavefrontobj" />
+    <None Include="Function\AbstractFunction.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\dll(x64)\libmpg123\COPYING.txt" />
@@ -295,10 +297,11 @@
     <ClInclude Include="BombViewer\PowderBuilder.h" />
     <ClInclude Include="BombViewer\TwoArgPowder.h" />
     <ClInclude Include="Coordinates2D.h" />
-    <ClInclude Include="Function\IFunction.h" />
+    <ClInclude Include="Function\AbstractFunction.h" />
     <ClInclude Include="Function\IOneArgFunction.h" />
     <ClInclude Include="Function\LeafX.h" />
     <ClInclude Include="Function\Sin.h" />
+    <ClInclude Include="Graph\Graph.h" />
     <ClInclude Include="Scale2D.h" />
     <ClInclude Include="Basis2D.h" />
     <ClInclude Include="Util.h" />

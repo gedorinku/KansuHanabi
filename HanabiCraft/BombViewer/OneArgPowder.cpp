@@ -24,21 +24,21 @@ void OneArgPowder::Update() {
 	Circle(pos, r).draw();
 }
 
-double OneArgPowder::Eval(double x) {
-	return function->Eval(x);
+double OneArgPowder::WeakEval(double x) {
+	return function->WeakEval(x);
 }
 
-SP<IFunction> OneArgPowder::GetChild() {
+SP<AbstractFunction> OneArgPowder::GetChild() {
 	return function->GetChild();
 }
 
-void OneArgPowder::SetChild(SP<IFunction> child) {
+void OneArgPowder::SetChild(SP<AbstractFunction> child) {
 	function->SetChild(child);
 	this->child = PowderBuilder(child).Build(this->child->GetPos(), this->child->GetR());
 }
 
-SP<Function::IFunction> OneArgPowder::Clone(SP<Function::IFunction> newChild) {
-	return SP<Function::IFunction>();
+SP<Function::AbstractFunction> OneArgPowder::Clone(SP<Function::AbstractFunction> newChild) {
+	return SP<Function::AbstractFunction>();
 }
 
 Vec2 OneArgPowder::GetPos() { return pos; }

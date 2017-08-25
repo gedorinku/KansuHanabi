@@ -8,20 +8,20 @@ namespace Function {
 class Sin : public IOneArgFunction {
 private:
 
-	SP<Function::IFunction> child;
+	SP<Function::AbstractFunction> child;
 
 public:
 
-	Sin(SP<Function::IFunction> child) : child(child) {}
+	Sin(SP<Function::AbstractFunction> child) : child(child) {}
 
-	virtual SP<Function::IFunction> GetChild() override { return child; }
+	virtual double WeakEval(double x) override { return sin(x); }
 
-	virtual void SetChild(SP<Function::IFunction> child) override { this->child = child; }
+	virtual SP<Function::AbstractFunction> GetChild() override { return child; }
 
-	virtual double Eval(double x) { return sin(x); }
+	virtual void SetChild(SP<Function::AbstractFunction> child) override { this->child = child; }
 
-	virtual SP<Function::IFunction> Clone(SP<Function::IFunction> newChild) override {
-		return SP<Function::IFunction>(new Sin(newChild));
+	virtual SP<Function::AbstractFunction> Clone(SP<Function::AbstractFunction> newChild) override {
+		return SP<Function::AbstractFunction>(new Sin(newChild));
 	}
 };
 

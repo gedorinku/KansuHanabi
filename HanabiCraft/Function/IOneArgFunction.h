@@ -1,32 +1,32 @@
 #pragma once
 #include "Util.h"
-#include "IFunction.h"
+#include "AbstractFunction.h"
 
 namespace HanabiCraft {
 namespace Function {
 
 
-class IOneArgFunction : public IFunction {
+class IOneArgFunction : public AbstractFunction {
 public:
 
-	virtual SP<IFunction> GetChild() = 0;
+	virtual SP<AbstractFunction> GetChild() = 0;
 
-	virtual void SetChild(SP<IFunction> child) = 0;
+	virtual void SetChild(SP<AbstractFunction> child) = 0;
 
-	virtual SP<Function::IFunction> Clone(SP<Function::IFunction> newChild) = 0;
+	virtual SP<Function::AbstractFunction> Clone(SP<Function::AbstractFunction> newChild) = 0;
 
-	void CheckChildren(const std::vector<SP<IFunction>> &children) {
+	void CheckChildren(const std::vector<SP<AbstractFunction>> &children) {
 		if (children.size() != 1) throw "‚±‚ÌŠÖ”‚Ìˆø”‚Ì”‚Í1‚Å‚·";
 	}
 
-	void SetChilren(const std::vector<SP<Function::IFunction>> &children) override {
+	void SetChilren(const std::vector<SP<Function::AbstractFunction>> &children) override {
 		CheckChildren(children);
 		SetChild(children[0]);
 	}
 
-	std::vector<SP<Function::IFunction>> GetChildren() override { return {GetChild()}; }
+	std::vector<SP<Function::AbstractFunction>> GetChildren() override { return {GetChild()}; }
 
-	SP<Function::IFunction> Clone(const std::vector<SP<Function::IFunction>> &newChildren) override {
+	SP<Function::AbstractFunction> Clone(const std::vector<SP<Function::AbstractFunction>> &newChildren) override {
 		CheckChildren(newChildren);
 		return Clone(newChildren[0]);
 	}

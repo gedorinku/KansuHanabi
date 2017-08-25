@@ -99,6 +99,9 @@
     <ClCompile Include="BombViewer\LeafXPowder.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
+    <ClCompile Include="Graph\Graph.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc">
@@ -342,6 +345,9 @@
     <None Include="Example\Well\Well.wavefrontobj">
       <Filter>リソース ファイル\Example\Well</Filter>
     </None>
+    <None Include="Function\AbstractFunction.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\dll(x64)\libmpg123\COPYING.txt">
@@ -425,9 +431,6 @@
     <ClInclude Include="Util.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
-    <ClInclude Include="Function\IFunction.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Function\LeafX.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
@@ -450,6 +453,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="BombViewer\LeafXPowder.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\Graph.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
