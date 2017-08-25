@@ -10,7 +10,8 @@
 #include "BombViewer\LeafXPowder.h"
 #include "BombViewer\IGunPowder.h"
 #include "BombViewer\PowderBuilder.h"
-#include "Graph\Graph.h"
+#include "Graph\GraphManager.h"
+#include "Graph\GraphManager.h"
 using namespace HanabiCraft;
 
 void Main() {
@@ -18,8 +19,9 @@ void Main() {
 		JustRun,
 		Function_PoyoTest,
 		BombViewer_PoyoTest,
-		Graph_Test
-	} mode = Mode::Graph_Test;
+		Graph_UpdateTest,
+		GraphManager_UpdateTest
+	} mode = Mode::GraphManager_UpdateTest;
 
 	if (mode == JustRun) {
 	}
@@ -37,11 +39,20 @@ void Main() {
 			p->Update();
 		}
 	}
-	else if (mode == Graph_Test) {
+	else if (mode == Graph_UpdateTest) {
 		SP<Function::AbstractFunction> f(new Function::Sin(SP<Function::LeafX>(new Function::LeafX())));
 		SP<Graph::Graph> graph(new Graph::Graph(0, 0, Window::Width(), Window::Height(), f));
 		while (System::Update()) {
 			graph->Update();
+		}
+	}
+	else if (mode == GraphManager_UpdateTest) {
+		SP<Function::AbstractFunction> f(new Function::Sin(SP<Function::LeafX>(new Function::LeafX())));
+		SP<HanabiCraft::Graph::GraphManager> v(new HanabiCraft::Graph::GraphManager(
+			0, 0, Window::Width(), Window::Height(), f
+		));
+		while (System::Update()) {
+			v->Update();
 		}
 	}
 	return;

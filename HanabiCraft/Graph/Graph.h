@@ -19,6 +19,14 @@ public:
 
 	void Update();
 
+	double ActualX();
+
+	double ActualY();
+
+	double ActualWidth();
+
+	double ActualHeight();
+
 	Vec2 GetRate();
 
 	void SetRate(const Vec2 &rate);
@@ -33,15 +41,7 @@ public:
 
 	Vec2 GetTranslation();
 
-	void SetTranslation(const Vec2 &translation);
-
-	double GetTranslationX();
-
-	void SetTranslationX(double x);
-
-	double GetTranslationY();
-
-	void SetTranslationY(double y);
+	void Translate(const Vec2 &delta);
 };
 
 

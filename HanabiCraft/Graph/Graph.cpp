@@ -24,6 +24,14 @@ void Graph::Update() {
 	Line(x + width/2, y, x + width/2, y + height).draw(2, Palette::Black);
 }
 
+double Graph::ActualX() { return x; }
+
+double Graph::ActualY() { return y; }
+
+double Graph::ActualWidth() { return width; }
+
+double Graph::ActualHeight() { return height; }
+
 Vec2 Graph::GetRate() { return function->GetRate(); }
 
 void Graph::SetRate(const Vec2 & rate) { function->SetRate(rate); }
@@ -38,15 +46,9 @@ void Graph::SetRateY(double y) { function->SetRateY(y); }
 
 Vec2 Graph::GetTranslation() { return function->GetTranslation(); }
 
-void Graph::SetTranslation(const Vec2 & translation) { return function->SetTranslation(translation); }
-
-double Graph::GetTranslationX() { return function->GetTranslationX(); }
-
-void Graph::SetTranslationX(double x) { function->SetTranslationX(x); }
-
-double Graph::GetTranslationY() { return function->GetTranslationY(); }
-
-void Graph::SetTranslationY(double y) { function->SetTranslationY(y); }
+void Graph::Translate(const Vec2 &delta) {
+	function->Translate(Vec2(delta.x/width, delta.y/height));
+}
 
 
 }

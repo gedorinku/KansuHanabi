@@ -262,6 +262,8 @@
     <None Include="Example\Well\Well.mtl" />
     <None Include="Example\Well\Well.wavefrontobj" />
     <None Include="Function\AbstractFunction.h" />
+    <None Include="Graph\GraphManager.cpp" />
+    <None Include="Graph\GraphManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="Engine\dll(x64)\libmpg123\COPYING.txt" />
