@@ -277,6 +277,9 @@
   <ItemGroup>
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BlockingQueue.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
