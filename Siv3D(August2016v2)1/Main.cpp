@@ -23,22 +23,20 @@ class Server{
 					message.push_back(character);
 				}
 			}
-			return "error";
+			return "";
 		}
 		void update(void) {
 			tcp_server.startAccept(80);
 			while (!tcp_server.isConnected());
-			LOG(L"connect");
 			std::string message;
 			message = read_req();
-			if (message == "error") {
-				LOG(L"error");
+			if (message == "") {
 				return;
 			}
 			LOG(L"message:", FromUTF8(message));
 			if (message == "get_list") {
 				tcp_server.send(function_cnt.c_str(), sizeof(char) * (function_cnt.length() + 1));
-				LOG(L"res", FromUTF8(function_cnt));
+				LOG(L"res:", FromUTF8(function_cnt));
 			}else {
 				std::string success("success");
 				request_queue.enqueue(message);
