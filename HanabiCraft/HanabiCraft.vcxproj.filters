@@ -390,21 +390,6 @@
     </Font>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\HanabiCraft_\Basis2D.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="..\HanabiCraft_\Coordinates2D.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="..\HanabiCraft_\Main.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="..\HanabiCraft_\Scale2D.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="..\HanabiCraft_\TmpClass.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="Scale2D.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
@@ -437,21 +422,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\HanabiCraft_\Basis2D.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="..\HanabiCraft_\Coordinates2D.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="..\HanabiCraft_\Scale2D.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="..\HanabiCraft_\TmpClass.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="..\HanabiCraft_\Util.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="Scale2D.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>

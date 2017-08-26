@@ -7,7 +7,7 @@ namespace Graph {
 
 Graph::Graph(double x, double y, double width, double height, SP<Function::AbstractFunction> function)
 	: x(x), y(y), width(width), height(height), function(function) {
-	function->SetRate({0.05, 1});
+	function->SetRate({0.1, 0.1});
 }
 
 void Graph::Update() {
@@ -16,8 +16,8 @@ void Graph::Update() {
 	for (int i = 0; i < div; i++) {
 		Vec2 a(i/(double)div, 0.5 - function->Eval(i*2/(double)div - 1)/2);
 		Vec2 b((i + 1)/(double)div, 0.5 - function->Eval((i + 1)*2/(double)div - 1)/2);
-		a.x *= width; a.y *= height;
-		b.x *= width; b.y *= height;
+		a.x = x + a.x*width; a.y = y + a.y*height;
+		b.x = x + b.x*width; b.y = y + b.y*height;
 		Line(a, b).draw(1, Palette::Blue);
 	}
 	Line(x, y + height/2, x + width, y + height/2).draw(2, Palette::Black);
@@ -47,7 +47,7 @@ void Graph::SetRateY(double y) { function->SetRateY(y); }
 Vec2 Graph::GetTranslation() { return function->GetTranslation(); }
 
 void Graph::Translate(const Vec2 &delta) {
-	function->Translate(Vec2(delta.x/width, delta.y/height));
+	function->Translate(Vec2(delta.x*2/width, -delta.y*2/height));
 }
 
 

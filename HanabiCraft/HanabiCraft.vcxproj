@@ -274,11 +274,6 @@
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\HanabiCraft_\Basis2D.cpp" />
-    <ClCompile Include="..\HanabiCraft_\Coordinates2D.cpp" />
-    <ClCompile Include="..\HanabiCraft_\Main.cpp" />
-    <ClCompile Include="..\HanabiCraft_\Scale2D.cpp" />
-    <ClCompile Include="..\HanabiCraft_\TmpClass.cpp" />
     <ClCompile Include="Basis2D.cpp" />
     <ClCompile Include="BombViewer\LeafXPowder.cpp" />
     <ClCompile Include="BombViewer\OneArgPowder.cpp" />
@@ -291,11 +286,6 @@
     <ClCompile Include="TmpClass.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\HanabiCraft_\Basis2D.h" />
-    <ClInclude Include="..\HanabiCraft_\Coordinates2D.h" />
-    <ClInclude Include="..\HanabiCraft_\Scale2D.h" />
-    <ClInclude Include="..\HanabiCraft_\TmpClass.h" />
-    <ClInclude Include="..\HanabiCraft_\Util.h" />
     <ClInclude Include="Basis2D.h" />
     <ClInclude Include="BombViewer\IGunPowder.h" />
     <ClInclude Include="BombViewer\LeafXPowder.h" />

@@ -27,7 +27,7 @@ public:
 	virtual SP<AbstractFunction> Clone(const std::vector<SP<AbstractFunction>> &newChildren) = 0;
 
 	double Eval(double x) {
-		return (WeakEval((x - translation.x)/rate.x) + translation.y)*rate.y;
+		return (WeakEval(x/rate.x - translation.x) + translation.y)*rate.y;
 	}
 
 	Vec2 GetRate() { return rate; }
@@ -55,8 +55,8 @@ public:
 	void SetTranslationY(double y) { translation.y = y; }
 
 	void Translate(const Vec2 &delta) {
-		SetTranslationX(GetTranslationX() - delta.x*GetRateX());
-		SetTranslationY(GetTranslationY() + delta.y/GetRateY());
+		SetTranslationX(GetTranslationX() + delta.x/rate.x);
+		SetTranslationY(GetTranslationY() + delta.y/rate.y);
 	}
 };
 

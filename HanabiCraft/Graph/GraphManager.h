@@ -11,7 +11,7 @@ namespace Graph {
 class GraphManager {
 private:
 
-	const double margin = 20;
+	const double margin = 100;
 	double x, y, width, height;
 	SP<Graph> graph;
 
