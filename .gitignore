@@ -261,3 +261,4 @@ __pycache__/
 *.pyc
 /HanabiCraft/Example
 /HanabiCraft/Engine/LogMessages.txt
+/HanabiCraft/HanabiCraft_log.html
