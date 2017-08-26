@@ -3,17 +3,23 @@
 #include <mutex>
 
 template <typename T>
-class blocking_queue {
+class blocking_queue
+{
 public:
-	blocking_queue() {}
-	void enqueue(const T& item) {
+	blocking_queue()
+	{
+	}
+
+	void enqueue(const T& item)
+	{
 		{
 			std::lock_guard<std::mutex> lock(lk_);
 			queue_.push(item);
 		}
 	}
 
-	T dequeue() {
+	T dequeue()
+	{
 		std::lock_guard<std::mutex> lk(lk_);
 
 		T result = queue_.front();
@@ -21,7 +27,8 @@ public:
 		return result;
 	}
 
-	size_t size() const {
+	size_t size() const
+	{
 		std::lock_guard<std::mutex> lock(lk_);
 		return queue_.size();
 	}
