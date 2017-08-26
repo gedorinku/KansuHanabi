@@ -27,10 +27,10 @@ void Selector::Update() {
 	if (v.mouseOver && Input::MouseL.pressed) {
 		if (!isDragged) {
 			itemOriginX = Max(Min(itemOriginX + Mouse::DeltaF().x, v.x + margin/2),
-								v.x + v.w - margin/2 - borderSize*itemCount);
+							  v.x + v.w - margin/2 - borderSize*itemCount);
 		}
 	}
-	
+
 	v.draw(Palette::White);
 	v.drawFrame(1, 1, Palette::Black);
 	RasterizerState rasterizer = RasterizerState::Default2D;
