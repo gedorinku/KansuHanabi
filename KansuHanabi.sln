@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26430.14
+VisualStudioVersion = 15.0.26730.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "KansuHanabi", "KansuHanabi\KansuHanabi.vcxproj", "{9F5A5474-73E0-4FF4-B48D-EB59009B9D4A}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HanabiCraft", "HanabiCraft\HanabiCraft.vcxproj", "{58C02150-3954-4945-8291-C830D30AB461}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "HanabiCraft", "HanabiCraft\HanabiCraft.vcxproj", "{C19904AD-34AD-4025-A9BB-7D670DBBC0C2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,16 +23,19 @@ Global
 		{9F5A5474-73E0-4FF4-B48D-EB59009B9D4A}.Release|x64.Build.0 = Release|x64
 		{9F5A5474-73E0-4FF4-B48D-EB59009B9D4A}.Release|x86.ActiveCfg = Release|Win32
 		{9F5A5474-73E0-4FF4-B48D-EB59009B9D4A}.Release|x86.Build.0 = Release|Win32
-		{58C02150-3954-4945-8291-C830D30AB461}.Debug|x64.ActiveCfg = Debug|x64
-		{58C02150-3954-4945-8291-C830D30AB461}.Debug|x64.Build.0 = Debug|x64
-		{58C02150-3954-4945-8291-C830D30AB461}.Debug|x86.ActiveCfg = Debug|Win32
-		{58C02150-3954-4945-8291-C830D30AB461}.Debug|x86.Build.0 = Debug|Win32
-		{58C02150-3954-4945-8291-C830D30AB461}.Release|x64.ActiveCfg = Release|x64
-		{58C02150-3954-4945-8291-C830D30AB461}.Release|x64.Build.0 = Release|x64
-		{58C02150-3954-4945-8291-C830D30AB461}.Release|x86.ActiveCfg = Release|Win32
-		{58C02150-3954-4945-8291-C830D30AB461}.Release|x86.Build.0 = Release|Win32
+		{C19904AD-34AD-4025-A9BB-7D670DBBC0C2}.Debug|x64.ActiveCfg = Debug|x64
+		{C19904AD-34AD-4025-A9BB-7D670DBBC0C2}.Debug|x64.Build.0 = Debug|x64
+		{C19904AD-34AD-4025-A9BB-7D670DBBC0C2}.Debug|x86.ActiveCfg = Debug|Win32
+		{C19904AD-34AD-4025-A9BB-7D670DBBC0C2}.Debug|x86.Build.0 = Debug|Win32
+		{C19904AD-34AD-4025-A9BB-7D670DBBC0C2}.Release|x64.ActiveCfg = Release|x64
+		{C19904AD-34AD-4025-A9BB-7D670DBBC0C2}.Release|x64.Build.0 = Release|x64
+		{C19904AD-34AD-4025-A9BB-7D670DBBC0C2}.Release|x86.ActiveCfg = Release|Win32
+		{C19904AD-34AD-4025-A9BB-7D670DBBC0C2}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD152531-5DAD-4C7D-A5EF-DD25EAB707F3}
 	EndGlobalSection
 EndGlobal
