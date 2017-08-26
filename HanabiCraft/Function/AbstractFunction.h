@@ -26,6 +26,14 @@ public:
 
 	virtual SP<AbstractFunction> Clone(const std::vector<SP<AbstractFunction>> &newChildren) = 0;
 
+	SP<AbstractFunction> DeepClone() {
+		std::vector<SP<AbstractFunction>> newChildren;
+		for each (SP<AbstractFunction> &var in GetChildren()) {
+			newChildren.push_back(var->DeepClone());
+		}
+		return Clone(newChildren);
+	}
+
 	double Eval(double x) {
 		return (WeakEval(x/rate.x - translation.x) + translation.y)*rate.y;
 	}

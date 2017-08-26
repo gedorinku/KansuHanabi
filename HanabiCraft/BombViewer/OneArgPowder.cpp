@@ -38,7 +38,7 @@ void OneArgPowder::SetChild(SP<AbstractFunction> child) {
 }
 
 SP<Function::AbstractFunction> OneArgPowder::Clone(SP<Function::AbstractFunction> newChild) {
-	return SP<Function::AbstractFunction>();
+	return function->Clone(newChild);
 }
 
 Vec2 OneArgPowder::GetPos() { return pos; }
