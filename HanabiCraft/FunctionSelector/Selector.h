@@ -2,6 +2,7 @@
 #include <Siv3D.hpp>
 #include "Util.h"
 #include "Function\AbstractFunction.h"
+#include "Hold.h"
 
 namespace HanabiCraft {
 namespace FunctionSelector {
@@ -17,8 +18,7 @@ private:
 	std::vector<SP<Function::AbstractFunction>> functions;
 	double itemOriginX; //âÊñ è„Ç≈ÇÃà íu
 	int selectedIndex;
-	Vec2 clickedPos;
-	bool isDragged;
+	Hold hold;
 
 public:
 

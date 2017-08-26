@@ -286,7 +286,7 @@
     <ClCompile Include="FunctionSelector\Selector.cpp" />
     <ClCompile Include="Graph\Graph.cpp" />
     <ClCompile Include="Graph\GraphManager.cpp" />
-    <ClCompile Include="HoldDrag.cpp" />
+    <ClCompile Include="Hold.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="Scale2D.cpp" />
     <ClCompile Include="TmpClass.cpp" />
@@ -306,7 +306,7 @@
     <ClInclude Include="Function\Sin.h" />
     <ClInclude Include="Graph\Graph.h" />
     <ClInclude Include="Graph\GraphManager.h" />
-    <ClInclude Include="HoldDrag.h" />
+    <ClInclude Include="Hold.h" />
     <ClInclude Include="Scale2D.h" />
     <ClInclude Include="TmpClass.h" />
     <ClInclude Include="Util.h" />

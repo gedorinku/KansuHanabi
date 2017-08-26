@@ -11,7 +11,7 @@ Selector::Selector(const RectF & v)
 	, itemOriginX(v.x + margin/2)
 	, borderSize(v.h)
 	, selectedIndex(-1)
-	, isDragged(false) {
+	, hold(500, 5) {
 	functions.resize(itemCount);
 	SP<Function::AbstractFunction> leaf(new Function::LeafX());
 	functions[0] = SP<Function::AbstractFunction>(new Function::Sin(leaf));
@@ -21,14 +21,11 @@ Selector::Selector(const RectF & v)
 }
 
 void Selector::Update() {
-	if (v.mouseOver && Input::MouseL.clicked) {
-		clickedPos = Mouse::PosF();
-	}
-	if (v.mouseOver && Input::MouseL.pressed) {
-		if (!isDragged) {
-			itemOriginX = Max(Min(itemOriginX + Mouse::DeltaF().x, v.x + margin/2),
-							  v.x + v.w - margin/2 - borderSize*itemCount);
-		}
+	hold.Update();
+
+	if (!hold.IsHeld() && v.mouseOver && Input::MouseL.pressed) {
+		itemOriginX = Max(Min(itemOriginX + Mouse::DeltaF().x, v.x + margin/2),
+							v.x + v.w - margin/2 - borderSize*itemCount);
 	}
 
 	v.draw(Palette::White);
@@ -46,6 +43,11 @@ void Selector::Update() {
 	}
 
 	Graphics2D::SetRasterizerState(RasterizerState::Default2D);
+
+	if (hold.IsHeld()) {
+		RoundRect(Mouse::PosF() - Vec2((borderSize - margin)/2, (borderSize - margin*2)/2),
+				  Vec2(borderSize - margin, borderSize - margin*2), 4).drawFrame(1, 1, Palette::Black);
+	}
 }
 
 
