@@ -16,8 +16,9 @@ private:
 	const double margin = 6;
 	std::vector<SP<Function::AbstractFunction>> functions;
 	double itemOriginX; //âÊñ è„Ç≈ÇÃà íu
-
-
+	int selectedIndex;
+	Vec2 clickedPos;
+	bool isDragged;
 
 public:
 

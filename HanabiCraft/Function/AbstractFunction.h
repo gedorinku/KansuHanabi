@@ -28,7 +28,7 @@ public:
 
 	SP<AbstractFunction> DeepClone() {
 		std::vector<SP<AbstractFunction>> newChildren;
-		for each (SP<AbstractFunction> &var in GetChildren()) {
+		for each (const SP<AbstractFunction> &var in GetChildren()) {
 			newChildren.push_back(var->DeepClone());
 		}
 		return Clone(newChildren);

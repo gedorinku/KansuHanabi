@@ -6,7 +6,12 @@ namespace HanabiCraft {
 namespace FunctionSelector {
 
 
-Selector::Selector(const RectF & v) : v(v), itemOriginX(v.x + margin/2), borderSize(v.h) {
+Selector::Selector(const RectF & v)
+	: v(v)
+	, itemOriginX(v.x + margin/2)
+	, borderSize(v.h)
+	, selectedIndex(-1)
+	, isDragged(false) {
 	functions.resize(itemCount);
 	SP<Function::AbstractFunction> leaf(new Function::LeafX());
 	functions[0] = SP<Function::AbstractFunction>(new Function::Sin(leaf));
@@ -16,9 +21,14 @@ Selector::Selector(const RectF & v) : v(v), itemOriginX(v.x + margin/2), borderS
 }
 
 void Selector::Update() {
+	if (v.mouseOver && Input::MouseL.clicked) {
+		clickedPos = Mouse::PosF();
+	}
 	if (v.mouseOver && Input::MouseL.pressed) {
-		itemOriginX = Max(Min(itemOriginX + Mouse::DeltaF().x, v.x + margin/2),
-						  v.x + v.w - margin/2 - borderSize*itemCount);
+		if (!isDragged) {
+			itemOriginX = Max(Min(itemOriginX + Mouse::DeltaF().x, v.x + margin/2),
+								v.x + v.w - margin/2 - borderSize*itemCount);
+		}
 	}
 	
 	v.draw(Palette::White);
