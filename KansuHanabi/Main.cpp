@@ -23,10 +23,8 @@ void Main()
 		))
 	};
 	std::list<hanabi::FireworkBall> balls;
-	auto hoge = hanabi::PolarCoordinatesGraph(*functions[4], -2.0 * Pi, 2.0 * Pi, 300.0);
 	while (System::Update())
 	{
-		hoge.draw();
 		if (Input::MouseL.clicked) {
 			auto index = Random(0, ((int) functions.size()) - 1);
 			auto firework = hanabi::NormalFirework(hanabi::XYGraph(*(functions[index]), -5.0, 5.0), Mouse::Pos(), 50);
