@@ -76,7 +76,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Users\winG3\Source\Repos\KansuHanabi\HanabiCraft;$(SIV3D_20160812)\Inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);$(SIV3D_20160812)\Inc;$(IncludePath)</IncludePath>
     <LibraryPath>$(SIV3D_20160812)\Lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -115,6 +115,7 @@
       <SDLCheck>true</SDLCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(ProjectDir)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -279,6 +280,7 @@
     <ClCompile Include="BombViewer\OneArgPowder.cpp" />
     <ClCompile Include="BombViewer\PowderBuilder.cpp" />
     <ClCompile Include="Coordinates2D.cpp" />
+    <ClCompile Include="FunctionSelector\Selector.cpp" />
     <ClCompile Include="Graph\Graph.cpp" />
     <ClCompile Include="Graph\GraphManager.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -293,6 +295,7 @@
     <ClInclude Include="BombViewer\PowderBuilder.h" />
     <ClInclude Include="BombViewer\TwoArgPowder.h" />
     <ClInclude Include="Coordinates2D.h" />
+    <ClInclude Include="FunctionSelector\Selector.h" />
     <ClInclude Include="Function\AbstractFunction.h" />
     <ClInclude Include="Function\IOneArgFunction.h" />
     <ClInclude Include="Function\LeafX.h" />

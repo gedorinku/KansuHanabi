@@ -23,7 +23,7 @@ void GraphManager::Update() {
 	const double rateOfRate = 1e-2;
 	if (viewerRect.mouseOver) {
 		if (Input::MouseL.pressed) {
-			graph->Translate(Mouse::Delta());
+			graph->Translate(Mouse::DeltaF());
 		}
 		if (Input::KeyUp.pressed) {
 			graph->SetRate(graph->GetRate()*(1 + rateOfRate));

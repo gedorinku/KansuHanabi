@@ -13,6 +13,7 @@
 #include "Graph\GraphManager.h"
 #include "Graph\GraphManager.h"
 #include "TmpClass.h"
+#include "FunctionSelector\Selector.h"
 using namespace HanabiCraft;
 
 void Main() {
@@ -21,8 +22,9 @@ void Main() {
 		Function_PoyoTest,
 		BombViewer_PoyoTest,
 		Graph_UpdateTest,
-		GraphManager_UpdateTest
-	} mode = Mode::GraphManager_UpdateTest;
+		GraphManager_UpdateTest,
+		Selector_UpdateTest
+	} mode = Mode::Selector_UpdateTest;
 
 	if (mode == JustRun) {
 	}
@@ -56,6 +58,12 @@ void Main() {
 			v->Update();
 		}
 		TmpClass t; t.Hoge();
+	}
+	else if (mode == Selector_UpdateTest) {
+		FunctionSelector::Selector s(RectF(0, 0, Window::Width(), 50));
+		while (System::Update()) {
+			s.Update();
+		}
 	}
 	return;
 }
