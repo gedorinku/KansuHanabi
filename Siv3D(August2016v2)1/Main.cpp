@@ -11,39 +11,40 @@ class Server{
 		blocking_queue<std::string> request_queue;
 		std::string read_req(void) {
 			std::string message;
-			while(true){
+			while (true) {
 				char character;
-
 				if (!tcp_server.read(character)) {
-					Println(L"read error");
-					return "";
+					break;
 				}
 
-				if (character == '\0'){
+				if (character == '\0') {
 					return message;
-				}else{
+				}else {
 					message.push_back(character);
 				}
 			}
+			return "error";
 		}
 		void update(void) {
-			if (tcp_server.isConnected()) {
-				std::string message;
-				message = read_req();
-				Println(L"message:", FromUTF8(message));
-				if (message == "get_list") {
-					tcp_server.send(function_cnt.c_str(), sizeof(char) * (function_cnt.length() + 1));
-					Println(L"res", FromUTF8(function_cnt));
-				}
-				else {
-					request_queue.enqueue(message);
-				}
-				tcp_server.disconnect();
-				tcp_server.startAccept(80);
+			tcp_server.startAccept(80);
+			while (!tcp_server.isConnected());
+			LOG(L"connect");
+			std::string message;
+			message = read_req();
+			if (message == "error") {
+				LOG(L"error");
 				return;
 			}
-			
-			
+			LOG(L"message:", FromUTF8(message));
+			if (message == "get_list") {
+				tcp_server.send(function_cnt.c_str(), sizeof(char) * (function_cnt.length() + 1));
+				LOG(L"res", FromUTF8(function_cnt));
+			}else {
+				std::string success("success");
+				request_queue.enqueue(message);
+				tcp_server.send(success.c_str(), sizeof(char) * (success.length() + 1));
+			}
+			tcp_server.disconnect();
 		}
 	public:
 		
@@ -52,7 +53,6 @@ class Server{
 		}
 		void start() {
 			std::thread s([&] {
-				tcp_server.startAccept(80);
 				while (true) {
 					update();
 				}
