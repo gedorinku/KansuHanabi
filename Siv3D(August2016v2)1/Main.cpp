@@ -16,6 +16,11 @@ class Server{
 			while (true) {
 				char character;
 				if (!tcp_server.read(character)) {
+
+					if (tcp_server.hasError()) {
+						LOG(L"server_has_error");
+						tcp_server.disconnect();
+					}
 					break;
 				}
 				if (character == '\0') {
