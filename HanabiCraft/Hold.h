@@ -27,6 +27,8 @@ public:
 	//ホールドし続けているか
 	bool IsHeld();
 
+	bool LastIsHeld();
+
 	//前回のUpdate時にホールド操作が終了したか
 	bool IsFinished();
 };

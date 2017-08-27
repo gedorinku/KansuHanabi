@@ -29,6 +29,10 @@ bool Hold::IsHeld() {
 	return isHeld;
 }
 
+bool Hold::LastIsHeld() {
+	return lastIsHeld;
+}
+
 bool Hold::IsFinished() {
 	return isHeld == false && lastIsHeld == true;
 }

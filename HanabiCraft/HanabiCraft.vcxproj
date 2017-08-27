@@ -279,9 +279,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Basis2D.cpp" />
-    <ClCompile Include="BombViewer\LeafXPowder.cpp" />
-    <ClCompile Include="BombViewer\OneArgPowder.cpp" />
-    <ClCompile Include="BombViewer\PowderBuilder.cpp" />
+    <ClCompile Include="Bomb\BombViewer.cpp" />
+    <ClCompile Include="Bomb\LeafXPowder.cpp" />
+    <ClCompile Include="Bomb\OneArgPowder.cpp" />
+    <ClCompile Include="Bomb\PowderBuilder.cpp" />
     <ClCompile Include="Coordinates2D.cpp" />
     <ClCompile Include="FunctionSelector\Selector.cpp" />
     <ClCompile Include="Graph\Graph.cpp" />
@@ -293,11 +294,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Basis2D.h" />
-    <ClInclude Include="BombViewer\IGunPowder.h" />
-    <ClInclude Include="BombViewer\LeafXPowder.h" />
-    <ClInclude Include="BombViewer\OneArgPowder.h" />
-    <ClInclude Include="BombViewer\PowderBuilder.h" />
-    <ClInclude Include="BombViewer\TwoArgPowder.h" />
+    <ClInclude Include="Bomb\BombViewer.h" />
+    <ClInclude Include="Bomb\AbstractGunPowder.h" />
+    <ClInclude Include="Bomb\LeafXPowder.h" />
+    <ClInclude Include="Bomb\OneArgPowder.h" />
+    <ClInclude Include="Bomb\PowderBuilder.h" />
+    <ClInclude Include="Bomb\TwoArgPowder.h" />
     <ClInclude Include="Coordinates2D.h" />
     <ClInclude Include="FunctionSelector\Selector.h" />
     <ClInclude Include="Function\AbstractFunction.h" />

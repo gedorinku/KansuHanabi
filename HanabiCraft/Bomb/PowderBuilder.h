@@ -1,10 +1,10 @@
 #pragma once
 #include "Util.h"
 #include "Function\AbstractFunction.h"
-#include "IGunPowder.h"
+#include "AbstractGunPowder.h"
 
 namespace HanabiCraft {
-namespace BombViewer {
+namespace Bomb {
 
 
 using namespace HanabiCraft::Function;
@@ -17,7 +17,7 @@ public:
 
 	PowderBuilder(SP<AbstractFunction> function);
 
-	SP<IGunPowder> Build(const Vec2 &pos, double r);
+	SP<AbstractGunPowder> Build();
 };
 
 

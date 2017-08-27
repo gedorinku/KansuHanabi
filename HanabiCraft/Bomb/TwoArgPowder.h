@@ -1,6 +1,6 @@
 #pragma once
 #include "Util.h"
-#include "IGunPowder.h"
+#include "AbstractGunPowder.h"
 
 namespace HanabiCraft {
 namespace BombViewer {

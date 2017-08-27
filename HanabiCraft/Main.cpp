@@ -6,10 +6,11 @@
 #include "Util.h"
 #include "Function\Sin.h"
 #include "Function\LeafX.h"
-#include "BombViewer\OneArgPowder.h"
-#include "BombViewer\LeafXPowder.h"
-#include "BombViewer\IGunPowder.h"
-#include "BombViewer\PowderBuilder.h"
+#include "Bomb\OneArgPowder.h"
+#include "Bomb\LeafXPowder.h"
+#include "Bomb\AbstractGunPowder.h"
+#include "Bomb\PowderBuilder.h"
+#include "Bomb\BombViewer.h"
 #include "Graph\GraphManager.h"
 #include "Graph\GraphManager.h"
 #include "TmpClass.h"
@@ -21,10 +22,11 @@ void Main() {
 		JustRun,
 		Function_PoyoTest,
 		BombViewer_PoyoTest,
+		BombViewer_BombViewer_UpdateTest,
 		Graph_UpdateTest,
 		GraphManager_UpdateTest,
 		Selector_UpdateTest
-	} mode = Mode::Selector_UpdateTest;
+	} mode = Mode::BombViewer_BombViewer_UpdateTest;
 
 	if (mode == JustRun) {
 	}
@@ -34,12 +36,23 @@ void Main() {
 		printf("%f\n", Function::Sin(SP<AbstractFunction>(new LeafX())).Eval(M_PI*3/2));
 	} 
 	else if (mode == BombViewer_PoyoTest) {
-		using namespace BombViewer;
 		using namespace Function;
-		SP<AbstractFunction> f(new Function::Sin(SP<AbstractFunction>(new LeafX())));
-		SP<IGunPowder> p(BombViewer::PowderBuilder(f).Build(Vec2(Window::Width()/2.0, Window::Height()/2.0), 100));
+		SP<AbstractFunction> g(new Function::Sin(SP<AbstractFunction>(new LeafX())));
+		SP<AbstractFunction> f(new Function::Sin(SP<AbstractFunction>(g)));
+		SP<Bomb::AbstractGunPowder> p(Bomb::PowderBuilder(f).Build());
+		Graphics::SetBackground(Palette::White);
 		while (System::Update()) {
-			p->Update();
+			p->Update(Circle(Vec2(Window::Width()/2.0, Window::Height()/2.0), 100));
+		}
+	}
+	else if (mode == BombViewer_BombViewer_UpdateTest) {
+		using namespace Function;
+		SP<AbstractFunction> g(new Function::Sin(SP<AbstractFunction>(new LeafX())));
+		SP<AbstractFunction> f(new Function::Sin(SP<AbstractFunction>(g)));
+		SP<Bomb::AbstractGunPowder> p(Bomb::PowderBuilder(f).Build());
+		Bomb::BombViewer viewer(Window::ClientRect(), p);
+		while (System::Update()) {
+			viewer.Update();
 		}
 	}
 	else if (mode == Graph_UpdateTest) {
