@@ -40,6 +40,7 @@ class Server{
 				LOG(L"res:", FromUTF8(function_cnt));
 			}else {
 				std::string success("success");
+				success.push_back('\n');
 				request_queue.enqueue(message);
 				tcp_server.send(success.c_str(), sizeof(char) * (success.length() + 1));
 			}
@@ -49,6 +50,7 @@ class Server{
 		
 		Server(int functionCount) {
 			function_cnt = std::to_string(functionCount);
+			function_cnt.push_back('\n');
 		}
 		void start() {
 			std::thread s([&] {
@@ -61,7 +63,6 @@ class Server{
 };
 void Main()
 {
-	
 	Server server(5);
 	server.start();
 	while (System::Update());
