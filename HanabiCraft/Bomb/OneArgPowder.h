@@ -10,17 +10,15 @@ namespace HanabiCraft {
 namespace Bomb {
 
 
-class OneArgPowder : public AbstractGunPowder, public Function::IOneArgFunction {
+class OneArgPowder : public AbstractGunPowder {
 private:
 
 	SP<Function::IOneArgFunction> function;
 	SP<AbstractGunPowder> child;
 
-	OneArgPowder(SP<Function::IOneArgFunction> function,
-				 SP<AbstractGunPowder> child,
-				 const Color &color);
+	OneArgPowder(SP<Function::IOneArgFunction> function, SP<AbstractGunPowder> child);
 
-	virtual double WeakEval(double x) override;
+	//virtual double WeakEval(double x) override;
 
 	virtual void update(const Circle &base) override;
 
@@ -29,9 +27,9 @@ public:
 	static SP<OneArgPowder> Build(SP<Function::IOneArgFunction> function);
 
 	// IOneArgFunction ÇâÓÇµÇƒåpè≥Ç≥ÇÍÇ‹ÇµÇΩ
-	virtual SP<AbstractFunction> GetChild() override;
-	virtual void SetChild(SP<AbstractFunction> child) override;
-	virtual SP<Function::AbstractFunction> Clone(SP<Function::AbstractFunction> newChild) override;
+	//virtual SP<AbstractFunction> GetChild() override;
+	//virtual void SetChild(SP<AbstractFunction> child) override;
+	//virtual SP<Function::AbstractFunction> Clone(SP<Function::AbstractFunction> newChild) override;
 
 	// AbstractGunPowder ÇâÓÇµÇƒåpè≥Ç≥ÇÍÇ‹ÇµÇΩ
 	virtual SP<Function::AbstractFunction> GetFunction() override;

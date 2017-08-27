@@ -7,10 +7,8 @@ namespace Bomb {
 
 
 OneArgPowder::OneArgPowder(SP<Function::IOneArgFunction> function,
-						   SP<AbstractGunPowder> child,
-						   const Color &color)
-	: AbstractGunPowder(color)
-	, function(function)
+						   SP<AbstractGunPowder> child)
+	: function(function)
 	, child(child) {}
 
 SP<OneArgPowder> OneArgPowder::Build(SP<IOneArgFunction> function) {
@@ -20,7 +18,7 @@ SP<OneArgPowder> OneArgPowder::Build(SP<IOneArgFunction> function) {
 
 void OneArgPowder::update(const Circle &base) {}
 
-double OneArgPowder::WeakEval(double x) {
+/*double OneArgPowder::WeakEval(double x) {
 	return function->WeakEval(x);
 }
 
@@ -35,7 +33,7 @@ void OneArgPowder::SetChild(SP<AbstractFunction> child) {
 
 SP<Function::AbstractFunction> OneArgPowder::Clone(SP<Function::AbstractFunction> newChild) {
 	return function->Clone(newChild);
-}
+}*/
 
 SP<Function::AbstractFunction> OneArgPowder::GetFunction() {
 	return function;
@@ -56,12 +54,12 @@ void OneArgPowder::SetChild(int index, SP<AbstractGunPowder> child) {
 }
 
 Circle OneArgPowder::ChildCircle(const Circle &base, int index) {
-	return Circle(base.center, base.r*0.9);
+	return Circle(base.center, base.r*0.75);
 }
 
 void OneArgPowder::drawAll(const Circle & base) {
 	base.drawFrame(1, 1, Palette::Black);
-	child->Update(ChildCircle(base, 0));
+	base.draw(GetColor());
 }
 
 

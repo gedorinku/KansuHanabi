@@ -15,9 +15,12 @@
 #include "Graph\GraphManager.h"
 #include "TmpClass.h"
 #include "FunctionSelector\Selector.h"
+#include "CraftUI.h"
 using namespace HanabiCraft;
 
 void Main() {
+	for (int i = 0; i < 20; i++) Random();
+
 	enum Mode {
 		JustRun,
 		Function_PoyoTest,
@@ -25,8 +28,9 @@ void Main() {
 		BombViewer_BombViewer_UpdateTest,
 		Graph_UpdateTest,
 		GraphManager_UpdateTest,
-		Selector_UpdateTest
-	} mode = Mode::BombViewer_BombViewer_UpdateTest;
+		Selector_UpdateTest,
+		CraftUI_UpdateTest
+	} mode = Mode::CraftUI_UpdateTest;
 
 	if (mode == JustRun) {
 	}
@@ -42,15 +46,14 @@ void Main() {
 		SP<Bomb::AbstractGunPowder> p(Bomb::PowderBuilder(f).Build());
 		Graphics::SetBackground(Palette::White);
 		while (System::Update()) {
-			p->Update(Circle(Vec2(Window::Width()/2.0, Window::Height()/2.0), 100));
+			p->Draw(Circle(Vec2(Window::Width()/2.0, Window::Height()/2.0), 100));
 		}
 	}
 	else if (mode == BombViewer_BombViewer_UpdateTest) {
 		using namespace Function;
 		SP<AbstractFunction> g(new Function::Sin(SP<AbstractFunction>(new LeafX())));
 		SP<AbstractFunction> f(new Function::Sin(SP<AbstractFunction>(g)));
-		SP<Bomb::AbstractGunPowder> p(Bomb::PowderBuilder(f).Build());
-		Bomb::BombViewer viewer(Window::ClientRect(), p);
+		Bomb::BombViewer viewer(Window::ClientRect(), f);
 		while (System::Update()) {
 			viewer.Update();
 		}
@@ -76,6 +79,12 @@ void Main() {
 		FunctionSelector::Selector s(RectF(0, 0, Window::Width(), 50));
 		while (System::Update()) {
 			s.Update();
+		}
+	}
+	else if (mode == CraftUI_UpdateTest) {
+		CraftUI ui(Window::ClientRect());
+		while (System::Update()) {
+			ui.Update();
 		}
 	}
 	return;

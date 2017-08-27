@@ -20,6 +20,10 @@ Selector::Selector(const RectF & v)
 	}
 }
 
+void Selector::SetOnDrop(std::function<void(SP<Function::AbstractFunction>)> onDrop) {
+	this->onDrop = onDrop;
+}
+
 void Selector::Update() {
 	hold.Update();
 
@@ -27,7 +31,24 @@ void Selector::Update() {
 		itemOriginX = Max(Min(itemOriginX + Mouse::DeltaF().x, v.x + margin/2),
 							v.x + v.w - margin/2 - borderSize*itemCount);
 	}
+	if (hold.IsStarted()) {
+		selectedIndex = [&]() {
+			for (int i = 0; i < itemCount; i++) {
+				double x = itemOriginX + borderSize*i;
+				RoundRect rect(x + margin/2, v.y + margin, borderSize - margin, borderSize - margin*2, 4);
+				if (rect.mouseOver) return i;
+			}
+			return -1;
+		} ();
+	}
+	if (hold.IsFinished() && selectedIndex != -1 && onDrop) {
+		//DeepClone()‚µ‚È‚¢‚Æ‘å•Ï‚È–Ú‚É‡‚¤
+		onDrop(functions[selectedIndex]->DeepClone());
+		selectedIndex = -1;
+	}
+}
 
+void Selector::Draw() {
 	v.draw(Palette::White);
 	v.drawFrame(1, 1, Palette::Black);
 	RasterizerState rasterizer = RasterizerState::Default2D;
@@ -44,7 +65,7 @@ void Selector::Update() {
 
 	Graphics2D::SetRasterizerState(RasterizerState::Default2D);
 
-	if (hold.IsHeld()) {
+	if (hold.IsHeld() && selectedIndex != -1) {
 		RoundRect(Mouse::PosF() - Vec2((borderSize - margin)/2, (borderSize - margin*2)/2),
 				  Vec2(borderSize - margin, borderSize - margin*2), 4).drawFrame(1, 1, Palette::Black);
 	}

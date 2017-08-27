@@ -283,7 +283,9 @@
     <ClCompile Include="Bomb\LeafXPowder.cpp" />
     <ClCompile Include="Bomb\OneArgPowder.cpp" />
     <ClCompile Include="Bomb\PowderBuilder.cpp" />
+    <ClCompile Include="Bomb\PowderWrapper.cpp" />
     <ClCompile Include="Coordinates2D.cpp" />
+    <ClCompile Include="CraftUI.cpp" />
     <ClCompile Include="FunctionSelector\Selector.cpp" />
     <ClCompile Include="Graph\Graph.cpp" />
     <ClCompile Include="Graph\GraphManager.cpp" />
@@ -299,13 +301,16 @@
     <ClInclude Include="Bomb\LeafXPowder.h" />
     <ClInclude Include="Bomb\OneArgPowder.h" />
     <ClInclude Include="Bomb\PowderBuilder.h" />
+    <ClInclude Include="Bomb\PowderWrapper.h" />
     <ClInclude Include="Bomb\TwoArgPowder.h" />
     <ClInclude Include="Coordinates2D.h" />
+    <ClInclude Include="CraftUI.h" />
     <ClInclude Include="FunctionSelector\Selector.h" />
     <ClInclude Include="Function\AbstractFunction.h" />
     <ClInclude Include="Function\IOneArgFunction.h" />
     <ClInclude Include="Function\LeafX.h" />
     <ClInclude Include="Function\Sin.h" />
+    <ClInclude Include="Function\X.h" />
     <ClInclude Include="Graph\Graph.h" />
     <ClInclude Include="Graph\GraphManager.h" />
     <ClInclude Include="Hold.h" />

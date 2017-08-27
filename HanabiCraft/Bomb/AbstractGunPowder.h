@@ -12,7 +12,8 @@ public:
 
 	enum DrawMode {
 		All,
-		None
+		None,
+		Frame
 	};
 
 private:
@@ -22,27 +23,16 @@ private:
 
 protected:
 
-	AbstractGunPowder(const Color &color) : color(color) {}
-
-	//DrawModeに関わらずする処理
 	virtual void update(const Circle &base) = 0;
 
 	virtual void drawAll(const Circle &base) = 0;
 
-public:
-
-	void Update(const Circle &base) {
-		update(base);
-		switch (mode) {
-		case HanabiCraft::Bomb::AbstractGunPowder::All:
-			drawAll(base);
-			break;
-		case HanabiCraft::Bomb::AbstractGunPowder::None:
-			break;
-		default:
-			break;
-		}
+	virtual void drawFrame(const Circle &base) {
+		base.drawFrame(4, 2, Palette::White);
+		base.drawFrame(2, 0, Palette::Black);
 	}
+
+public:
 
 	virtual int ChildCount() = 0;
 
@@ -54,11 +44,16 @@ public:
 
 	virtual Circle ChildCircle(const Circle &base, int index) = 0;
 
+	void SetColor(const Color &color) { this->color = color; }
+
 	Color GetColor() { return color; }
 
-	Color CreateChildColor(int index) {
-		HSV hsv(color);
-		return HSV(Random(), hsv.s, hsv.v);
+	//このノードと含むノード全てを、ランダムな色相に
+	void SetAllRandomColor(const HSV &tone) {
+		SetColor(HSV(Random(360), tone.s, tone.v));
+		for (int i = 0; i < ChildCount(); i++) {
+			GetChild(i)->SetAllRandomColor(tone);
+		}
 	}
 
 	DrawMode GetDrawMode() { return mode; }
@@ -71,6 +66,31 @@ public:
 		for (int i = 0; i < ChildCount(); i++) {
 			GetChild(i)->SetDrawMode(mode);
 			GetChild(i)->SetChildrenDrawMode(mode);
+		}
+	}
+
+	void Update(const Circle &base) {
+		update(base);
+		for (int i = 0; i < ChildCount(); i++) {
+			GetChild(i)->Update(ChildCircle(base, 0));
+		}
+	}
+
+	void Draw(const Circle &base) {
+		switch (mode) {
+		case All:
+			drawAll(base);
+			break;
+		case None:
+			break;
+		case Frame:
+			drawFrame(base);
+			break;
+		default:
+			break;
+		}
+		for (int i = 0; i < ChildCount(); i++) {
+			GetChild(i)->Draw(ChildCircle(base, 0));
 		}
 	}
 };

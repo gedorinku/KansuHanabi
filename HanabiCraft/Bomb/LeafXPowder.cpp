@@ -42,6 +42,7 @@ Circle LeafXPowder::ChildCircle(const Circle &base, int index) {
 
 void LeafXPowder::drawAll(const Circle & base) {
 	base.drawFrame(1, 1, Palette::Black);
+	base.draw(GetColor());
 }
 
 

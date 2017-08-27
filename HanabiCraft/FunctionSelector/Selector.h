@@ -3,6 +3,7 @@
 #include "Util.h"
 #include "Function\AbstractFunction.h"
 #include "Hold.h"
+#include "functional"
 
 namespace HanabiCraft {
 namespace FunctionSelector {
@@ -19,12 +20,18 @@ private:
 	double itemOriginX; //âÊñ è„Ç≈ÇÃà íu
 	int selectedIndex;
 	Hold hold;
+	std::function<void(SP<Function::AbstractFunction>)> onDrop;
+	
 
 public:
 
 	Selector(const RectF &v);
 
+	void SetOnDrop(std::function<void(SP<Function::AbstractFunction>)> onDrop);
+
 	void Update();
+
+	void Draw();
 };
 
 
