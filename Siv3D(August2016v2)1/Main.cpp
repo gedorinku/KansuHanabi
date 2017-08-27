@@ -28,6 +28,7 @@ class Server{
 		void update(void) {
 			tcp_server.startAccept(80);
 			while (!tcp_server.isConnected());
+			LOG(L"!!!!!connect!!!!!!!");
 			std::string message;
 			message = read_req();
 			if (message == "") {
@@ -60,6 +61,7 @@ class Server{
 };
 void Main()
 {
+	
 	Server server(5);
 	server.start();
 	while (System::Update());
