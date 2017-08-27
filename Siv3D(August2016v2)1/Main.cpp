@@ -7,7 +7,7 @@
 class Server{
 	private:
 		TCPServer tcp_server;
-		std::string function_cnt;
+		std::string function_data;
 		blocking_queue<std::string> request_queue;
 		std::string read_req(void) {
 			std::string message;
@@ -36,11 +36,10 @@ class Server{
 			}
 			LOG(L"message:", FromUTF8(message));
 			if (message == "get_list") {
-				tcp_server.send(function_cnt.c_str(), sizeof(char) * (function_cnt.length() + 1));
-				LOG(L"res:", FromUTF8(function_cnt));
+				tcp_server.send(function_data.c_str(), sizeof(char) * (function_data.length() + 1));
+				LOG(L"res:", FromUTF8(function_data));
 			}else {
-				std::string success("success");
-				success.push_back('\n');
+				std::string success("success\n");
 				request_queue.enqueue(message);
 				tcp_server.send(success.c_str(), sizeof(char) * (success.length() + 1));
 			}
@@ -49,8 +48,17 @@ class Server{
 	public:
 		
 		Server(int functionCount) {
-			function_cnt = std::to_string(functionCount);
-			function_cnt.push_back('\n');
+			function_data = std::to_string(functionCount);
+			function_data.push_back('\n');
+			//それっぽい文字列を生成
+			for (int i = 0; i < functionCount; i++) {
+				std::string id;
+				id = std::to_string(i);
+				id.push_back('\n');
+				std::string func("y=sin(x)");
+				func.push_back('\n');
+				function_data += (id + func);
+			}
 		}
 		void start() {
 			std::thread s([&] {
