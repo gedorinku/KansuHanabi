@@ -7,6 +7,8 @@
 class Server{
 	private:
 		TCPServer tcp_server;
+		bool exit_flag = false;
+		bool exited = false;
 		std::string function_data;
 		blocking_queue<std::string> request_queue;
 		std::string read_req(void) {
@@ -16,7 +18,6 @@ class Server{
 				if (!tcp_server.read(character)) {
 					break;
 				}
-
 				if (character == '\0') {
 					return message;
 				}else {
@@ -27,7 +28,11 @@ class Server{
 		}
 		void update(void) {
 			tcp_server.startAccept(80);
-			while (!tcp_server.isConnected());
+			while (!exit_flag && !tcp_server.isConnected());
+			if (exit_flag) {
+				tcp_server.disconnect();
+				return;
+			}
 			LOG(L"!!!!!connect!!!!!!!");
 			std::string message;
 			message = read_req();
@@ -62,11 +67,20 @@ class Server{
 		}
 		void start() {
 			std::thread s([&] {
-				while (true) {
+				while (!exit_flag) {
+
 					update();
 				}
+				exited = true;
+				return;
 			});
 			s.detach();
+		}
+		~Server(){
+			exit_flag = true;
+			while (!exited) {
+				LOG(L"Waiting exit");
+			};
 		}
 };
 void Main()
