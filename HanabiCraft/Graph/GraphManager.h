@@ -21,6 +21,8 @@ public:
 
 	GraphManager(double x, double y, double width, double height, SP<Function::AbstractFunction> function);
 
+	void SetFunction(SP<Function::AbstractFunction> function);
+
 	void Update();
 };
 

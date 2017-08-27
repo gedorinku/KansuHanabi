@@ -27,6 +27,8 @@ public:
 
 	double ActualHeight();
 
+	void SetFunction(SP<Function::AbstractFunction> function);
+
 	Vec2 GetRate();
 
 	void SetRate(const Vec2 &rate);

@@ -19,6 +19,10 @@ GraphManager::GraphManager(double x,
 
 }
 
+void GraphManager::SetFunction(SP<Function::AbstractFunction> function) {
+	graph->SetFunction(function);
+}
+
 void GraphManager::Update() {
 	const double rateOfRate = 1e-2;
 	if (viewerRect.mouseOver) {

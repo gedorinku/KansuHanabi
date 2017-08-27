@@ -32,6 +32,10 @@ double Graph::ActualWidth() { return width; }
 
 double Graph::ActualHeight() { return height; }
 
+void Graph::SetFunction(SP<Function::AbstractFunction> function) {
+	this->function = function;
+}
+
 Vec2 Graph::GetRate() { return function->GetRate(); }
 
 void Graph::SetRate(const Vec2 & rate) { function->SetRate(rate); }
