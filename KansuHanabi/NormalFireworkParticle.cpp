@@ -2,15 +2,16 @@
 #include "NormalFireworkParticle.h"
 
 
-
-hanabi::NormalFireworkParticle::NormalFireworkParticle(const s3d::Vec2& start, const s3d::Vec2& end, double time)
+hanabi::NormalFireworkParticle::NormalFireworkParticle(std::shared_ptr<Image> buffer, const Vec2& parentPosition, const Vec2& start, const Vec2& end, double time)
 	: flashProbability(EasingController<int>(500, 0, Easing::Expo, time / 2.0)),
-		position(EasingController<Vec2>(start, end, Easing::Expo, time)),
-		hue(EasingController<double>(0.0, 360.0, Easing::Linear, time)),
-		fired(false),
-		flashStartsAtMillis(0),
-		trajectory(),
-		lastParticleMillis(0L)
+	  position(EasingController<Vec2>(start, end, Easing::Expo, time)),
+	  parentPosition(parentPosition),
+	  hue(EasingController<double>(0.0, 360.0, Easing::Linear, time)),
+	  fired(false),
+	  flashStartsAtMillis(0),
+	  trajectory(),
+	  lastParticleMillis(0L),
+	  buffer(buffer)
 {
 }
 
@@ -36,12 +37,12 @@ void hanabi::NormalFireworkParticle::draw()
 		flashStartsAtMillis = Time::GetMillisec64();
 	}
 
-	constexpr Vec2 gravity(0.0, -0.000005);
 	auto elapsedTime = Time::GetMillisec64() - firedAtMillis;
 	auto nextPosition = position.easeOut() - gravity * elapsedTime * elapsedTime;
-
-	if (elapsedTime < 800) {
-		trajectory.emplace_back(nextPosition, 100);
+	
+	if (elapsedTime < 800)
+	{
+		trajectory.emplace_back(parentPosition + nextPosition, 100);
 	}
 	for (auto& particle : trajectory)
 	{
@@ -54,7 +55,7 @@ void hanabi::NormalFireworkParticle::draw()
 
 	if (Time::GetMillisec64() - flashStartsAtMillis <= 20) return;
 
-	Circle(nextPosition, 1.0).draw(HSV(hue.easeOut(), 0.9, 1.0));
+	Circle(nextPosition, 1.0).overwrite(*buffer, HSV(hue.easeOut(), 0.9, 1.0));
 }
 
 bool hanabi::NormalFireworkParticle::isAlive() const

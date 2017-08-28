@@ -4,7 +4,7 @@
 
 
 hanabi::NormalFirework::NormalFirework(const NormalFirework& obj)
-	: Firework(obj), balls(obj.balls)
+	: Firework(obj), balls(obj.balls), buffer(obj.buffer), delta(obj.delta), blurredTexture(obj.blurredTexture), scale(obj.scale), lifeTime(obj.lifeTime)
 {
 }
 
@@ -14,9 +14,12 @@ hanabi::NormalFirework::NormalFirework(const Graph& graph, double x, double y, d
 }
 
 hanabi::NormalFirework::NormalFirework(const Graph& graph, const s3d::Vec2& position, double size)
-	: Firework(position)
+	: Firework(position),
+		buffer(std::make_shared<Image>(size * 10, size * 10))
 {
-	auto time = size * 125.0;
+	delta = -Vec2{ buffer->size.x, buffer->size.y } / 2.0;
+	lifeTime = size * 125.0;
+	scale = EasingController<double>(0.0, 1.0, Easing::Expo, lifeTime);
 	const auto& vertexes = graph.getVertexes();
 	std::random_device rd;
 	std::mt19937 mt(rd());
@@ -50,11 +53,27 @@ hanabi::NormalFirework::NormalFirework(const Graph& graph, const s3d::Vec2& posi
 			}
 		}
 	}
+
+	std::shared_ptr<Image> blurBuffer = std::make_shared<Image>(buffer->size);
+	blurBuffer->fill({ 0, 0, 0, 0 });
+	const Point center(size * 5, size * 5);
 	for (auto i = 0; i < points.size(); i++)
 	{
-		auto noise = RandomVec2(length(mt));
-		balls.emplace_back(NormalFireworkParticle(position, position + points[i] * size + noise, time));
+		const auto noise = RandomVec2(length(mt));
+		const auto &parentPosition = position + delta;
+		const auto &start = center;
+		const auto &end = center + points[i] * size + noise;
+
+		NormalFireworkParticle(blurBuffer, parentPosition, end, start, lifeTime).draw();
+
+		balls.emplace_back(NormalFireworkParticle(buffer, parentPosition, start, end, lifeTime));
 	}
+
+	blurBuffer->gaussianBlur(15, 15);
+	blurBuffer->forEach([&](Color &pixcel) -> void {
+		pixcel.a *= 5;
+	});
+	blurredTexture.fill(*blurBuffer);
 }
 
 hanabi::NormalFirework::~NormalFirework()
@@ -63,11 +82,31 @@ hanabi::NormalFirework::~NormalFirework()
 
 void hanabi::NormalFirework::draw()
 {
-	Graphics2D::SetBlendState(BlendState::Additive);
+	if (!scale.isActive())
+	{
+		scale.start();
+		startAtMillis = Time::GetMillisec64();
+	}
+	buffer->fill({ 0, 0, 0, 0 });
 	for (auto& ball : balls)
 	{
 		ball.draw();
 	}
+	Graphics2D::SetBlendState(BlendState::Additive);
+	texture.fill(*buffer);
+	texture.draw(position + delta);
+	//texture.fill(buffer->gaussianBlurred(16, 16));
+	//texture.draw(position + delta);
+	//for (int i = 0; i < 5; ++i) {
+	const auto elapsedTime = Time::GetMillisec64() - startAtMillis;
+	if (elapsedTime < lifeTime / 3.0) {
+		blurredTexture.scale(scale.easeOut()).draw(position + delta * scale.easeOut() - NormalFireworkParticle::gravity * elapsedTime * elapsedTime);
+	} else 
+	{
+		std::cout << std::endl;
+	}
+	//
+	//}
 	Graphics2D::SetBlendState(BlendState::Default);
 }
 

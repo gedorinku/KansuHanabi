@@ -1,4 +1,5 @@
 #pragma once
+#include <memory>
 #include "Firework.h"
 #include "Graph/Graph.h"
 #include "NormalFireworkParticle.h"
@@ -19,6 +20,13 @@ namespace hanabi {
 
 	private:
 		std::vector<NormalFireworkParticle> balls;
+		std::shared_ptr<s3d::Image> buffer;
+		s3d::DynamicTexture texture;
+		s3d::DynamicTexture blurredTexture;
+		s3d::Vec2 delta;
+		s3d::EasingController<double> scale;
+		long long startAtMillis;
+		double lifeTime;
 	};
 }
 

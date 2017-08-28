@@ -9,6 +9,7 @@
 
 void Main()
 {
+	Window::Resize(1920, 1200);
 	const Font font(30);
 	//std::array<std::function<hanabi::Function && ()>, 1> functions = {
 	//	[]() -> hanabi::Function&& { return hanabi::Cos(); }
@@ -27,7 +28,7 @@ void Main()
 	{
 		if (Input::MouseL.clicked) {
 			auto index = Random(0, ((int) functions.size()) - 1);
-			auto firework = hanabi::NormalFirework(hanabi::XYGraph(*(functions[index]), -5.0, 5.0), Mouse::Pos(), 50);
+			auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(*(functions[index]), -5.0, 5.0), Mouse::Pos(), 50);
 			balls.emplace_back(firework, Vec2{ Mouse::Pos().x, 600 }, Mouse::Pos());
 		}
 
