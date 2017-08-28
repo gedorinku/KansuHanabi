@@ -3,6 +3,8 @@
 #include "OneArgPowder.h"
 #include "LeafXPowder.h"
 #include "Function\LeafX.h"
+#include "Function\TwoArgFunction.h"
+#include "TwoArgPowder.h"
 #include <Siv3D.hpp>
 
 namespace HanabiCraft {
@@ -15,11 +17,15 @@ PowderBuilder::PowderBuilder(SP<AbstractFunction> function) : function(function)
 SP<AbstractGunPowder> PowderBuilder::Build() {
 	{
 		auto p = std::dynamic_pointer_cast<IOneArgFunction>(function);
-		if (p != nullptr) return OneArgPowder::Build(p);
+		if (p) return OneArgPowder::Build(p);
 	}
 	{
 		auto p = std::dynamic_pointer_cast<LeafX>(function);
-		if (p != nullptr) return SP<AbstractGunPowder>(new LeafXPowder(p));
+		if (p) return SP<AbstractGunPowder>(new LeafXPowder(p));
+	}
+	{
+		auto p = std::dynamic_pointer_cast<TwoArgFunction>(function);
+		if (p) return TwoArgPowder::Build(p);
 	}
 	assert(false);
 }

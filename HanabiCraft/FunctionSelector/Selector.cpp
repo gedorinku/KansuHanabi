@@ -1,6 +1,7 @@
 #include "Selector.h"
 #include "Function\LeafX.h"
 #include "Function\Sin.h"
+#include "Function\Plus.h"
 
 namespace HanabiCraft {
 namespace FunctionSelector {
@@ -15,7 +16,10 @@ Selector::Selector(const RectF & v)
 	functions.resize(itemCount);
 	SP<Function::AbstractFunction> leaf(new Function::LeafX());
 	functions[0] = SP<Function::AbstractFunction>(new Function::Sin(leaf));
-	for (int i = 1; i < itemCount; i++) {
+	SP<Function::AbstractFunction> leaf1(new Function::LeafX());
+	SP<Function::AbstractFunction> leaf2(new Function::LeafX());
+	functions[1] = SP<Function::AbstractFunction>(new Function::Plus(leaf1, leaf2));
+	for (int i = 2; i < itemCount; i++) {
 		functions[i] = SP<Function::AbstractFunction>(new Function::LeafX());
 	}
 }

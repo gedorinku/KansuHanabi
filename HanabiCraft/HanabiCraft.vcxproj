@@ -284,6 +284,7 @@
     <ClCompile Include="Bomb\OneArgPowder.cpp" />
     <ClCompile Include="Bomb\PowderBuilder.cpp" />
     <ClCompile Include="Bomb\PowderWrapper.cpp" />
+    <ClCompile Include="Bomb\TwoArgPowder.cpp" />
     <ClCompile Include="Coordinates2D.cpp" />
     <ClCompile Include="CraftUI.cpp" />
     <ClCompile Include="FunctionSelector\Selector.cpp" />
@@ -310,7 +311,9 @@
     <ClInclude Include="Function\AbstractFunction.h" />
     <ClInclude Include="Function\IOneArgFunction.h" />
     <ClInclude Include="Function\LeafX.h" />
+    <ClInclude Include="Function\Plus.h" />
     <ClInclude Include="Function\Sin.h" />
+    <ClInclude Include="Function\TwoArgFunction.h" />
     <ClInclude Include="Function\X.h" />
     <ClInclude Include="Graph\Graph.h" />
     <ClInclude Include="Graph\GraphArea.h" />

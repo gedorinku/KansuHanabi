@@ -49,7 +49,7 @@ public:
 
 	//このノードと含むノード全てを、ランダムな色相に
 	void SetAllRandomColor(const HSV &tone) {
-		SetColor(HSV(Random(360), tone.s, tone.v));
+		SetColor(HSV(Random(360.0), tone.s, tone.v));
 		for (int i = 0; i < ChildCount(); i++) {
 			GetChild(i)->SetAllRandomColor(tone);
 		}
@@ -71,7 +71,7 @@ public:
 	void Update(const Circle &base) {
 		update(base);
 		for (int i = 0; i < ChildCount(); i++) {
-			GetChild(i)->Update(ChildCircle(base, 0));
+			GetChild(i)->Update(ChildCircle(base, i));
 		}
 	}
 
@@ -89,7 +89,7 @@ public:
 			break;
 		}
 		for (int i = 0; i < ChildCount(); i++) {
-			GetChild(i)->Draw(ChildCircle(base, 0));
+			GetChild(i)->Draw(ChildCircle(base, i));
 		}
 	}
 };
