@@ -313,6 +313,7 @@
     <ClInclude Include="Function\LeafX.h" />
     <ClInclude Include="Function\Plus.h" />
     <ClInclude Include="Function\Sin.h" />
+    <ClInclude Include="Function\Time.h" />
     <ClInclude Include="Function\TwoArgFunction.h" />
     <ClInclude Include="Function\X.h" />
     <ClInclude Include="Graph\Graph.h" />

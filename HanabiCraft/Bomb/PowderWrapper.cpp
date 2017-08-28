@@ -17,6 +17,12 @@ Circle PowderWrapper::ChildCircle(const Circle & base, int index) {
 	return base;
 }
 
+void PowderWrapper::SetName(const String & name) { this->name = name; }
+
+String PowderWrapper::GetName() {
+	return name;
+}
+
 
 }
 }

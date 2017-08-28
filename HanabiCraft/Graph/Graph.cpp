@@ -11,6 +11,10 @@ Graph::Graph(double x, double y, double width, double height, SP<Function::Abstr
 
 void Graph::Draw() {
 	Rect(x, y, width, height).draw(Palette::White);
+	RasterizerState rasterizer = RasterizerState::Default2D;
+	rasterizer.scissorEnable = true;
+	Graphics2D::SetRasterizerState(rasterizer);
+	Graphics2D::SetScissorRect(Rect(x + 0.5, y + 0.5, width + 0.5, height + 0.5));
 	int div = width + 0.5;
 	for (int i = 0; i < div; i++) {
 		Vec2 a(i/(double)div, 0.5 - function->Eval(i*2/(double)div - 1)/2);
@@ -21,6 +25,7 @@ void Graph::Draw() {
 	}
 	Line(x, y + height/2, x + width, y + height/2).draw(2, Palette::Black);
 	Line(x + width/2, y, x + width/2, y + height).draw(2, Palette::Black);
+	Graphics2D::SetRasterizerState(RasterizerState::Default2D);
 }
 
 double Graph::ActualX() { return x; }

@@ -2,18 +2,23 @@
 #include "PowderBuilder.h"
 #include "PowderWrapper.h"
 #include "Function\LeafX.h"
+#include "PowderBuilder.h"
 
 namespace HanabiCraft {
 namespace Bomb {
 
 
 BombViewer::BombViewer(const RectF & v, SP<Function::AbstractFunction> function)
-	: v(v), controllEnable(true), basePos(v.x + v.w/2, v.y + v.h/2), baseR(Min(v.w, v.h)/2*0.8) {
+	: v(v), controllEnable(true), basePos(v.x + v.w/2, v.y + v.h/2), baseR(Min(v.w, v.h)/2*0.8), bombIndex(0) {
 	basePosEasing = EasingController<Vec2>(basePos, basePos, Easing::Linear, 1);
 	baseREasing = EasingController<double>(baseR, baseR, Easing::Linear, 1);
 	//powders.push_back(PowderBuilder(function).Build());
-	powders.push_back(SP<AbstractGunPowder>(new PowderWrapper(SP<Function::AbstractFunction>(new LeafX()))));
-	powders.back()->SetAllRandomColor(powderTone);
+	bombs.resize(100);
+	for (int i = 0; i < bombs.size(); i++) {
+		bombs[i] = SP<PowderWrapper>(new PowderWrapper(SP<Function::AbstractFunction>(new LeafX())));
+		bombs[i]->SetAllRandomColor(powderTone);
+	}
+	powders.push_back(bombs[bombIndex]);
 	resetDrawMode();
 }
 
@@ -56,6 +61,14 @@ void BombViewer::Update() {
 			resetDrawMode();
 			if (onChange) onChange(*this);
 		}
+		else if (Input::KeyRight.clicked && bombIndex < bombs.size() - 1) {
+			powders = {bombs[++bombIndex]};
+			resetDrawMode();
+		}
+		else if (Input::KeyLeft.clicked && 0 < bombIndex) {
+			powders = {bombs[--bombIndex]};
+			resetDrawMode();
+		}
 	}
 	controllEnable = true;
 }
@@ -64,6 +77,8 @@ void BombViewer::Draw() {
 	v.draw(Palette::White);
 	auto c = CurrentCircle();
 	powders.back()->Draw(c);
+	static Font font(25);
+	font(bombIndex).draw(v.x, v.y + v.h - 50, Palette::Orange);
 }
 
 void BombViewer::Drop(SP<Function::AbstractFunction> function) {
@@ -101,6 +116,11 @@ SP<AbstractGunPowder> BombViewer::SelectedPowder() const {
 
 Circle BombViewer::CurrentCircle() {
 	return Circle(basePosEasing.easeOut(), baseREasing.easeOut());
+}
+
+void BombViewer::SetBomb(int index, SP<Function::AbstractFunction> bomb) {
+	if (index < 0 || bombs.size() <= index) return;
+	bombs[index] = SP<PowderWrapper>(new PowderWrapper(bomb));
 }
 
 
