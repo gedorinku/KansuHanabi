@@ -8,7 +8,9 @@ namespace Bomb {
 
 
 BombViewer::BombViewer(const RectF & v, SP<Function::AbstractFunction> function)
-	: v(v), baseCircle(v.x + v.w/2, v.y + v.h/2, Min(v.w, v.h)/2*0.8), controllEnable(true) {
+	: v(v), controllEnable(true), basePos(v.x + v.w/2, v.y + v.h/2), baseR(Min(v.w, v.h)/2*0.8) {
+	basePosEasing = EasingController<Vec2>(basePos, basePos, Easing::Linear, 1);
+	baseREasing = EasingController<double>(baseR, baseR, Easing::Linear, 1);
 	//powders.push_back(PowderBuilder(function).Build());
 	powders.push_back(SP<AbstractGunPowder>(new PowderWrapper(SP<Function::AbstractFunction>(new LeafX()))));
 	powders.back()->SetAllRandomColor(powderTone);
@@ -29,7 +31,7 @@ void BombViewer::Update() {
 	auto containedPowderIndex = [&](const Vec2 &pos) {
 		for (int i = 0; i < powders.back()->ChildCount(); i++) {
 			if (powders.back()->GetChild(i)->ChildCount() == 0) continue;
-			if (powders.back()->ChildCircle(baseCircle, i).contains(pos))
+			if (powders.back()->ChildCircle(CurrentCircle(), i).contains(pos))
 				return i;
 		}
 		return -1;
@@ -39,9 +41,14 @@ void BombViewer::Update() {
 		if (Input::MouseL.released) {
 			int index = containedPowderIndex(Mouse::PosF());
 			if (index != -1) {
+				Circle start = powders.back()->ChildCircle(CurrentCircle(), index);
+				basePosEasing = EasingController<Vec2>(start.center, basePos, Easing::Quint, 400);
+				baseREasing = EasingController<double>(start.r, baseR, Easing::Quint, 400);
 				powders.push_back(powders.back()->GetChild(index));
 				resetDrawMode();
 				if (onChange) onChange(*this);
+				basePosEasing.start();
+				baseREasing.start();
 			}
 		}
 		else if (Input::KeyBackspace.clicked && powders.size() > 1) {
@@ -55,14 +62,15 @@ void BombViewer::Update() {
 
 void BombViewer::Draw() {
 	v.draw(Palette::White);
-	powders.back()->Draw(baseCircle);
+	auto c = CurrentCircle();
+	powders.back()->Draw(c);
 }
 
 void BombViewer::Drop(SP<Function::AbstractFunction> function) {
 	controllEnable = false;
 	bool valid = [&]() {
 		for (int i = 0; i < powders.back()->ChildCount(); i++) {
-			Circle c = powders.back()->ChildCircle(baseCircle, i);
+			Circle c = powders.back()->ChildCircle(CurrentCircle(), i);
 			c.r += 20;
 			if (c.mouseOver) return true;
 		}
@@ -72,7 +80,7 @@ void BombViewer::Drop(SP<Function::AbstractFunction> function) {
 	int droppedIndex = -1;
 	double minDist = 1e50;
 	for (int i = 0; i < powders.back()->ChildCount(); i++) {
-		double d = powders.back()->ChildCircle(baseCircle, i).center.distanceFrom(Mouse::Pos());
+		double d = powders.back()->ChildCircle(CurrentCircle(), i).center.distanceFrom(Mouse::Pos());
 		if (d < minDist) {
 			minDist = d; droppedIndex = i;
 		}
@@ -89,6 +97,10 @@ void BombViewer::SetOnChange(std::function<void(const BombViewer&)> onMove) {
 
 SP<AbstractGunPowder> BombViewer::SelectedPowder() const {
 	return powders.back();
+}
+
+Circle BombViewer::CurrentCircle() {
+	return Circle(basePosEasing.easeOut(), baseREasing.easeOut());
 }
 
 

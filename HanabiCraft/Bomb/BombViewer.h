@@ -12,7 +12,10 @@ class BombViewer {
 private:
 
 	RectF v;
-	Circle baseCircle;
+	Vec2 basePos;
+	double baseR;
+	EasingController<Vec2> basePosEasing;
+	EasingController<double> baseREasing;
 	std::vector<SP<AbstractGunPowder>> powders;
 	const HSV powderTone = HSV(0, 0.8, 0.8);
 	bool controllEnable;
@@ -33,6 +36,8 @@ public:
 	void SetOnChange(std::function<void(const BombViewer&)> onMove);
 
 	SP<AbstractGunPowder> SelectedPowder() const;
+
+	Circle CurrentCircle();
 };
 
 
