@@ -1,7 +1,7 @@
 ﻿# include <string>
 # include <Siv3D.hpp>
 # include <cassert>
-#include <thread>
+# include <thread>
 # include "BlockingQueue.h"
 
 class Server{
@@ -10,7 +10,6 @@ class Server{
 		bool exit_flag = false;
 		bool exited = false;
 		std::string function_data;
-		blocking_queue<std::string> request_queue;
 		std::string read_req(void) {
 			std::string message;
 			while (true) {
@@ -18,7 +17,6 @@ class Server{
 				if (!tcp_server.read(character)) {
 
 					if (tcp_server.hasError()) {
-						LOG(L"server_has_error");
 						tcp_server.disconnect();
 					}
 					break;
@@ -38,7 +36,7 @@ class Server{
 				tcp_server.disconnect();
 				return;
 			}
-			LOG(L"!!!!!connect!!!!!!!");
+			LOG(L"connect");
 			std::string message;
 			message = read_req();
 			if (message == "") {
@@ -56,7 +54,7 @@ class Server{
 			tcp_server.disconnect();
 		}
 	public:
-		
+		blocking_queue<std::string> request_queue;
 		Server(int functionCount) {
 			function_data = std::to_string(functionCount);
 			function_data.push_back('\n');
@@ -73,7 +71,6 @@ class Server{
 		void start() {
 			std::thread s([&] {
 				while (!exit_flag) {
-
 					update();
 				}
 				exited = true;
