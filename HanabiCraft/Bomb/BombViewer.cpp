@@ -74,7 +74,6 @@ void BombViewer::Update() {
 }
 
 void BombViewer::Draw() {
-	v.draw(Palette::White);
 	auto c = CurrentCircle();
 	powders.back()->Draw(c);
 	static Font font(25);

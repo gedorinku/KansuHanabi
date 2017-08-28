@@ -10,7 +10,6 @@ Graph::Graph(double x, double y, double width, double height, SP<Function::Abstr
 }
 
 void Graph::Draw() {
-	Rect(x, y, width, height).draw(Palette::White);
 	RasterizerState rasterizer = RasterizerState::Default2D;
 	rasterizer.scissorEnable = true;
 	Graphics2D::SetRasterizerState(rasterizer);

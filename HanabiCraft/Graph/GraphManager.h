@@ -16,10 +16,11 @@ private:
 	SP<Graph> graph;
 	RectF viewerRect;
 	RectF downButtonX, upButtonX, downButtonY, upButtonY;
+	const Texture downXTex, upXTex, downYTex, upYTex;
 
 public:
 
-	GraphManager(double x, double y, double width, double height, SP<Function::AbstractFunction> function);
+	GraphManager(double x, double y, double width, double height, SP<Function::AbstractFunction> function, int aaaaaa = -1);
 
 	void SetFunction(SP<Function::AbstractFunction> function);
 

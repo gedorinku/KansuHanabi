@@ -1,5 +1,6 @@
 #pragma once
 #include "IOneArgFunction.h"
+#include "LeafX.h"
 
 namespace HanabiCraft {
 namespace Function {
@@ -12,7 +13,7 @@ private:
 
 public:
 
-	Sin(SP<Function::AbstractFunction> child) : child(child) {}
+	Sin(SP<Function::AbstractFunction> child = SP<AbstractFunction>(new LeafX())) : child(child) {}
 
 	virtual double WeakEval(double x) override { return sin(child->Eval(x)); }
 

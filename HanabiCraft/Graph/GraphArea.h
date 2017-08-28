@@ -12,7 +12,8 @@ class GraphArea {
 private:
 	
 	RectF v;
-	SP<GraphManager> parentGraph, childGraph1, childGraph2;
+	SP<GraphManager> childGraph1, childGraph2;
+	SP<Graph> parentGraph;
 
 public:
 

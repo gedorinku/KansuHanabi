@@ -19,7 +19,8 @@ public:
 
 	void Update();
 
-	Vec2 GetClickedPos();
+	//TODO: ?
+	//Vec2 GetClickedPos();
 
 	//前回のUpdate時にホールド操作が発生したか
 	bool IsStarted();

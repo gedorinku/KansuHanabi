@@ -19,7 +19,9 @@
 using namespace HanabiCraft;
 
 void Main() {
+
 	for (int i = 0; i < 20; i++) Random();
+	Window::Resize((int)(1980*_UTIL_KUSOCONST + 0.5), (int)(1200*_UTIL_KUSOCONST + 0.5));
 
 	enum Mode {
 		JustRun,
@@ -86,6 +88,7 @@ void Main() {
 		CraftUI ui(Window::ClientRect());
 		while (System::Update()) {
 			ui.Update();
+			ui.Draw();
 		}
 	}
 	return;

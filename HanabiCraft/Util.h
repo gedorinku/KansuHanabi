@@ -1,4 +1,5 @@
 #pragma once
+#define _UTIL_KUSOCONST 0.7
 #include <memory>
 #include <vector>
 template<class T> using SP = std::shared_ptr<T>;

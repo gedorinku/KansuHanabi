@@ -22,6 +22,8 @@ public:
 	CraftUI(const RectF &v);
 
 	void Update();
+
+	void Draw();
 };
 
 

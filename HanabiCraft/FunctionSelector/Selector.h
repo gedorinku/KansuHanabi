@@ -14,8 +14,8 @@ private:
 
 	RectF v;
 	double borderSize;
-	const int itemCount = 20;
-	const double margin = 6;
+	const int itemCount;
+	const double margin = 4;
 	std::vector<SP<Function::AbstractFunction>> functions;
 	double itemOriginX; //âÊñ è„Ç≈ÇÃà íu
 	int selectedIndex;
@@ -28,6 +28,8 @@ public:
 	Selector(const RectF &v);
 
 	void SetOnDrop(std::function<void(SP<Function::AbstractFunction>)> onDrop);
+
+	RoundRect GetRect(int index);
 
 	void Update();
 

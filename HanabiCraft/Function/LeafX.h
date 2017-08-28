@@ -9,6 +9,8 @@ namespace Function {
 class LeafX sealed : public AbstractFunction {
 public:
 
+	static SP<LeafX> Build() { return SP<LeafX>(new LeafX()); }
+
 	virtual std::vector<SP<AbstractFunction>> GetChildren() override {
 		return std::vector<SP<AbstractFunction>>();
 	}

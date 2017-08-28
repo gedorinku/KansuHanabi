@@ -10,9 +10,10 @@ namespace FunctionSelector {
 Selector::Selector(const RectF & v)
 	: v(v)
 	, itemOriginX(v.x + margin/2)
-	, borderSize(v.h)
+	, borderSize(v.h/2)
 	, selectedIndex(-1)
-	, hold(500, 5) {
+	, hold(500, 5)
+	, itemCount(20) {
 	functions.resize(itemCount);
 	SP<Function::AbstractFunction> leaf(new Function::LeafX());
 	functions[0] = SP<Function::AbstractFunction>(new Function::Sin(leaf));
@@ -28,20 +29,27 @@ void Selector::SetOnDrop(std::function<void(SP<Function::AbstractFunction>)> onD
 	this->onDrop = onDrop;
 }
 
+RoundRect Selector::GetRect(int index) {
+	double x = itemOriginX + (index/2)*borderSize;
+	return RoundRect(x + margin/2,
+					 v.y + margin + borderSize*(index&1),
+					 borderSize - margin,
+					 borderSize - margin,
+					 4);
+}
+
 //TODO: タッチ操作は前回タッチしたところから移動したかのような挙動をするので、itemOriginXが壊れる
 void Selector::Update() {
 	hold.Update();
 
 	if (!hold.IsHeld() && v.mouseOver && Input::MouseL.pressed) {
 		itemOriginX = Max(Min(itemOriginX + Mouse::DeltaF().x, v.x + margin/2),
-							v.x + v.w - margin/2 - borderSize*itemCount);
+							v.x + v.w - margin/2 - borderSize*((itemCount + 1)/2));
 	}
 	if (hold.IsStarted()) {
 		selectedIndex = [&]() {
 			for (int i = 0; i < itemCount; i++) {
-				double x = itemOriginX + borderSize*i;
-				RoundRect rect(x + margin/2, v.y + margin, borderSize - margin, borderSize - margin*2, 4);
-				if (rect.mouseOver) return i;
+				if (GetRect(i).mouseOver) return i;
 			}
 			return -1;
 		} ();
@@ -54,18 +62,15 @@ void Selector::Update() {
 }
 
 void Selector::Draw() {
-	v.draw(Palette::White);
-	v.drawFrame(1, 1, Palette::Black);
 	RasterizerState rasterizer = RasterizerState::Default2D;
 	rasterizer.scissorEnable = true;
 	Graphics2D::SetRasterizerState(rasterizer);
 	Graphics2D::SetScissorRect(Rect(v.x + 0.5, v.y + 0.5, v.w + 0.5, v.h + 0.5));
 
 	for (int i = 0; i < itemCount; i++) {
-		double x = itemOriginX + borderSize*i;
+		double x = itemOriginX + borderSize*(i/2);
 		if (x + borderSize < v.x || v.x + v.w < x) continue;
-		RoundRect(x + margin/2, v.y + margin, borderSize - margin, borderSize - margin*2, 4)
-			.drawFrame(1, 1, Palette::Black);
+		GetRect(i).drawFrame(1, 1, Palette::Black);
 	}
 
 	Graphics2D::SetRasterizerState(RasterizerState::Default2D);
