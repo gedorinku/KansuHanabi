@@ -10,7 +10,7 @@ hanabi::Constant::Constant(const Constant& obj) : Function(obj), value(obj.value
 {
 }
 
-double hanabi::Constant::Evaluate(double x)
+double hanabi::Constant::evaluate(double x) const
 {
 	return value;
 }

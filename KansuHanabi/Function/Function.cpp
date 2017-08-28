@@ -1,6 +1,13 @@
 #include "Function.h"
 
-double hanabi::Function::Evaluate(double x)
+
+
+hanabi::Function::Function(const Function & function)
+	: innerFunctions(function.innerFunctions)
+{
+}
+
+double hanabi::Function::evaluate(double x) const
 {
 	return x;
 }
