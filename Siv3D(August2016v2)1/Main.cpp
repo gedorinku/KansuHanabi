@@ -1,7 +1,7 @@
 ﻿# include <string>
 # include <Siv3D.hpp>
 # include <cassert>
-#include  <thread>
+#include <thread>
 # include "BlockingQueue.h"
 
 class Server{
@@ -38,7 +38,7 @@ class Server{
 				tcp_server.disconnect();
 				return;
 			}
-			//LOG(L"!!!!!connect!!!!!!!");
+			LOG(L"!!!!!connect!!!!!!!");
 			std::string message;
 			message = read_req();
 			if (message == "") {
@@ -52,7 +52,6 @@ class Server{
 				std::string success("success\n");
 				request_queue.enqueue(message);
 				tcp_server.send(success.c_str(), sizeof(char) * (success.length() + 1));
-				LOG(L"res:", FromUTF8(success));
 			}
 			tcp_server.disconnect();
 		}
