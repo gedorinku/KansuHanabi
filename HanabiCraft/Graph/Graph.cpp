@@ -7,7 +7,6 @@ namespace Graph {
 
 Graph::Graph(double x, double y, double width, double height, SP<Function::AbstractFunction> function)
 	: x(x), y(y), width(width), height(height), function(function) {
-	function->SetRate({0.1, 0.1});
 }
 
 void Graph::Draw() {

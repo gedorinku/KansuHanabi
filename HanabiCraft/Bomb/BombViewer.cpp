@@ -12,6 +12,7 @@ BombViewer::BombViewer(const RectF & v, SP<Function::AbstractFunction> function)
 	//powders.push_back(PowderBuilder(function).Build());
 	powders.push_back(SP<AbstractGunPowder>(new PowderWrapper(SP<Function::AbstractFunction>(new LeafX()))));
 	powders.back()->SetAllRandomColor(powderTone);
+	resetDrawMode();
 }
 
 void BombViewer::resetDrawMode() {
@@ -79,6 +80,7 @@ void BombViewer::Drop(SP<Function::AbstractFunction> function) {
 	auto newChild = PowderBuilder(function).Build();
 	newChild->SetAllRandomColor(powderTone);
 	powders.back()->SetChild(droppedIndex, newChild);
+	resetDrawMode();
 }
 
 void BombViewer::SetOnChange(std::function<void(const BombViewer&)> onMove) {
