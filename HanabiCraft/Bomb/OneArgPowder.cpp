@@ -58,8 +58,8 @@ Circle OneArgPowder::ChildCircle(const Circle &base, int index) {
 }
 
 void OneArgPowder::drawAll(const Circle & base) {
-	base.drawFrame(1, 1, Palette::Black);
 	base.draw(GetColor());
+	drawFrame(base);
 }
 
 
