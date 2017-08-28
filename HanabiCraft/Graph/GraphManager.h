@@ -11,7 +11,7 @@ namespace Graph {
 class GraphManager {
 private:
 
-	const double margin = 100;
+	double margin = 100;
 	double x, y, width, height;
 	SP<Graph> graph;
 	RectF viewerRect;
@@ -24,6 +24,8 @@ public:
 	void SetFunction(SP<Function::AbstractFunction> function);
 
 	void Update();
+
+	void Draw();
 };
 
 

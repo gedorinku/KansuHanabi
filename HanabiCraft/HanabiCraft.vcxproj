@@ -288,6 +288,7 @@
     <ClCompile Include="CraftUI.cpp" />
     <ClCompile Include="FunctionSelector\Selector.cpp" />
     <ClCompile Include="Graph\Graph.cpp" />
+    <ClCompile Include="Graph\GraphArea.cpp" />
     <ClCompile Include="Graph\GraphManager.cpp" />
     <ClCompile Include="Hold.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -312,6 +313,7 @@
     <ClInclude Include="Function\Sin.h" />
     <ClInclude Include="Function\X.h" />
     <ClInclude Include="Graph\Graph.h" />
+    <ClInclude Include="Graph\GraphArea.h" />
     <ClInclude Include="Graph\GraphManager.h" />
     <ClInclude Include="Hold.h" />
     <ClInclude Include="Scale2D.h" />

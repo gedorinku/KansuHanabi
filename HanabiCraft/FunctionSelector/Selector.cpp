@@ -24,6 +24,7 @@ void Selector::SetOnDrop(std::function<void(SP<Function::AbstractFunction>)> onD
 	this->onDrop = onDrop;
 }
 
+//TODO: タッチ操作は前回タッチしたところから移動したかのような挙動をするので、itemOriginXが壊れる
 void Selector::Update() {
 	hold.Update();
 

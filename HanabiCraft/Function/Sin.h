@@ -14,7 +14,7 @@ public:
 
 	Sin(SP<Function::AbstractFunction> child) : child(child) {}
 
-	virtual double WeakEval(double x) override { return sin(x); }
+	virtual double WeakEval(double x) override { return sin(child->Eval(x)); }
 
 	virtual SP<Function::AbstractFunction> GetChild() override { return child; }
 

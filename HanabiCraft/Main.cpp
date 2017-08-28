@@ -62,7 +62,7 @@ void Main() {
 		SP<Function::AbstractFunction> f(new Function::Sin(SP<Function::LeafX>(new Function::LeafX())));
 		SP<Graph::Graph> graph(new Graph::Graph(0, 0, Window::Width(), Window::Height(), f));
 		while (System::Update()) {
-			graph->Update();
+			graph->Draw();
 		}
 	}
 	else if (mode == GraphManager_UpdateTest) {
@@ -72,6 +72,7 @@ void Main() {
 		));
 		while (System::Update()) {
 			v->Update();
+			v->Draw();
 		}
 		TmpClass t; t.Hoge();
 	}

@@ -8,7 +8,7 @@ namespace Bomb {
 
 
 BombViewer::BombViewer(const RectF & v, SP<Function::AbstractFunction> function)
-	: v(v), baseCircle(v.x + v.w/2, v.y + v.h/2, Min(v.w, v.h)/2*0.8), isDropped(false) {
+	: v(v), baseCircle(v.x + v.w/2, v.y + v.h/2, Min(v.w, v.h)/2*0.8), controllEnable(true) {
 	//powders.push_back(PowderBuilder(function).Build());
 	powders.push_back(SP<AbstractGunPowder>(new PowderWrapper(SP<Function::AbstractFunction>(new LeafX()))));
 	powders.back()->SetAllRandomColor(powderTone);
@@ -34,19 +34,22 @@ void BombViewer::Update() {
 		return -1;
 	};
 
-	if (Input::MouseL.released && !isDropped) {
-		int index = containedPowderIndex(Mouse::PosF());
-		if (index != -1) {
-			powders.push_back(powders.back()->GetChild(index));
+	if (controllEnable) {
+		if (Input::MouseL.released) {
+			int index = containedPowderIndex(Mouse::PosF());
+			if (index != -1) {
+				powders.push_back(powders.back()->GetChild(index));
+				resetDrawMode();
+				if (onChange) onChange(*this);
+			}
+		}
+		else if (Input::KeyBackspace.clicked && powders.size() > 1) {
+			powders.pop_back();
 			resetDrawMode();
+			if (onChange) onChange(*this);
 		}
 	}
-
-	if (Input::KeyBackspace.clicked && powders.size() > 1) {
-		powders.pop_back();
-		resetDrawMode();
-	}
-	isDropped = false;
+	controllEnable = true;
 }
 
 void BombViewer::Draw() {
@@ -55,7 +58,7 @@ void BombViewer::Draw() {
 }
 
 void BombViewer::Drop(SP<Function::AbstractFunction> function) {
-	isDropped = true;
+	controllEnable = false;
 	bool valid = [&]() {
 		for (int i = 0; i < powders.back()->ChildCount(); i++) {
 			Circle c = powders.back()->ChildCircle(baseCircle, i);
@@ -76,6 +79,14 @@ void BombViewer::Drop(SP<Function::AbstractFunction> function) {
 	auto newChild = PowderBuilder(function).Build();
 	newChild->SetAllRandomColor(powderTone);
 	powders.back()->SetChild(droppedIndex, newChild);
+}
+
+void BombViewer::SetOnChange(std::function<void(const BombViewer&)> onMove) {
+	this->onChange = onMove;
+}
+
+SP<AbstractGunPowder> BombViewer::SelectedPowder() const {
+	return powders.back();
 }
 
 

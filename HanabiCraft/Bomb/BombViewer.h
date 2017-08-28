@@ -15,7 +15,8 @@ private:
 	Circle baseCircle;
 	std::vector<SP<AbstractGunPowder>> powders;
 	const HSV powderTone = HSV(0, 0.8, 0.8);
-	bool isDropped;
+	bool controllEnable;
+	std::function<void(const BombViewer&)> onChange;
 
 	void resetDrawMode();
 
@@ -28,6 +29,10 @@ public:
 	void Draw();
 
 	void Drop(SP<Function::AbstractFunction> function);
+
+	void SetOnChange(std::function<void(const BombViewer&)> onMove);
+
+	SP<AbstractGunPowder> SelectedPowder() const;
 };
 
 

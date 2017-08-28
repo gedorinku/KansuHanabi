@@ -10,7 +10,7 @@ Graph::Graph(double x, double y, double width, double height, SP<Function::Abstr
 	function->SetRate({0.1, 0.1});
 }
 
-void Graph::Update() {
+void Graph::Draw() {
 	Rect(x, y, width, height).draw(Palette::White);
 	int div = width + 0.5;
 	for (int i = 0; i < div; i++) {

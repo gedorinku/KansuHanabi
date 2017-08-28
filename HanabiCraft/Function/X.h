@@ -16,7 +16,7 @@ public:
 	X(SP<AbstractFunction> child) : child(child) {}
 
 	// IOneArgFunction ‚ð‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½
-	virtual double WeakEval(double x) override { return x; }
+	virtual double WeakEval(double x) override { return child->Eval(x); }
 
 	virtual SP<AbstractFunction> GetChild() override { return child; }
 

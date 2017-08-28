@@ -4,12 +4,14 @@ namespace HanabiCraft {
 namespace Graph {
 
 
+//marginの初期化を早めにやってほしいんですけど、コンストラクタの呼ばれる順が変数の宣言順？(注意)
 GraphManager::GraphManager(double x,
 						   double y,
 						   double width,
 						   double height,
 						   SP<Function::AbstractFunction> function)
 	: x(x), y(y), width(width), height(height)
+	, margin(Min(width, height)*0.2)
 	, graph(new Graph(x + margin, y, width - margin, height - margin, function))
 	, viewerRect(x + margin, y, width - margin, height - margin)
 	, downButtonX(x + margin, y + height - margin, (width - margin)/2, margin)
@@ -36,10 +38,6 @@ void GraphManager::Update() {
 			graph->SetRate(graph->GetRate()*(1 - rateOfRate));
 		}
 	}
-	downButtonX.draw(HSV(0, 0.63, 0.8));
-	upButtonX.draw(HSV(195, 0.63, 0.8));
-	downButtonY.draw(HSV(0, 0.63, 0.8));
-	upButtonY.draw(HSV(195, 0.63, 0.8));
 	if (downButtonX.mouseOver && Input::MouseL.pressed) {
 		graph->SetRateX(graph->GetRateX()*(1 - rateOfRate));
 	}
@@ -52,7 +50,14 @@ void GraphManager::Update() {
 	else if (upButtonY.mouseOver && Input::MouseL.pressed) {
 		graph->SetRateY(graph->GetRateY()*(1 + rateOfRate));
 	}
-	graph->Update();
+}
+
+void GraphManager::Draw() {
+	downButtonX.draw(HSV(0, 0.63, 0.8));
+	upButtonX.draw(HSV(195, 0.63, 0.8));
+	downButtonY.draw(HSV(0, 0.63, 0.8));
+	upButtonY.draw(HSV(195, 0.63, 0.8));
+	graph->Draw();
 }
 
 

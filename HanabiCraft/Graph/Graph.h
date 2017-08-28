@@ -17,7 +17,7 @@ public:
 
 	Graph(double x, double y, double width, double height, SP<Function::AbstractFunction> function);
 
-	void Update();
+	void Draw();
 
 	double ActualX();
 
