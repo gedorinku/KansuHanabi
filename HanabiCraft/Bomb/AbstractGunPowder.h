@@ -28,8 +28,7 @@ protected:
 	virtual void drawAll(const Circle &base) = 0;
 
 	virtual void drawFrame(const Circle &base) {
-		base.drawFrame(4, 2, Palette::White);
-		base.drawFrame(2, 0, Palette::Black);
+		base.drawFrame(2, 0, Palette::White);
 	}
 
 public:
