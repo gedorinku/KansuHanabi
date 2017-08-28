@@ -11,11 +11,11 @@ namespace Bomb {
 class TwoArgPowder : public AbstractGunPowder {
 private:
 
-	SP<Function::AbstractFunction> function;
+	SP<Function::TwoArgFunction> function;
 	SP<AbstractGunPowder> child1, child2;
 	double rad;
 
-	TwoArgPowder(SP<Function::AbstractFunction> function,
+	TwoArgPowder(SP<Function::TwoArgFunction> function,
 				 SP<AbstractGunPowder> child1,
 				 SP<AbstractGunPowder> child2);
 

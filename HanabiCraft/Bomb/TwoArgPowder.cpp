@@ -5,7 +5,7 @@ namespace HanabiCraft {
 namespace Bomb {
 
 
-TwoArgPowder::TwoArgPowder(SP<Function::AbstractFunction> function,
+TwoArgPowder::TwoArgPowder(SP<Function::TwoArgFunction> function,
 						   SP<AbstractGunPowder> child1,
 						   SP<AbstractGunPowder> child2)
 	: function(function), child1(child1), child2(child2) {
@@ -20,7 +20,11 @@ SP<TwoArgPowder> TwoArgPowder::Build(SP<Function::TwoArgFunction> function) {
 
 void HanabiCraft::Bomb::TwoArgPowder::update(const Circle & base) {}
 
-void HanabiCraft::Bomb::TwoArgPowder::drawAll(const Circle & base) {}
+void HanabiCraft::Bomb::TwoArgPowder::drawAll(const Circle & base) {
+	base.draw(GetColor());
+	base.drawFrame(4, 2, Palette::White);
+	base.drawFrame(2, 0, Palette::Black);
+}
 
 int HanabiCraft::Bomb::TwoArgPowder::ChildCount() {
 	return 2;
@@ -33,8 +37,8 @@ SP<AbstractGunPowder> HanabiCraft::Bomb::TwoArgPowder::GetChild(int index) {
 }
 
 void HanabiCraft::Bomb::TwoArgPowder::SetChild(int index, SP<AbstractGunPowder> child) {
-	if (index == 0) child1 = child;
-	if (index == 1) child2 = child;
+	if (index == 0) { child1 = child; function->SetChild1(child->GetFunction()); }
+	if (index == 1) { child2 = child; function->SetChild2(child->GetFunction()); }
 }
 
 SP<Function::AbstractFunction> HanabiCraft::Bomb::TwoArgPowder::GetFunction() {
