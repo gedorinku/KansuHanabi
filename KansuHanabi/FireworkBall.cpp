@@ -1,5 +1,10 @@
 #include <Siv3D.hpp>
 #include "FireworkBall.h"
+#include "Function/Constant.h"
+#include "Function/Fraction.h"
+#include "Function/Sin.h"
+#include "Function/Cos.h"
+#include "Graph/XYGraph.h"
 
 
 hanabi::FireworkBall::~FireworkBall()
@@ -19,7 +24,21 @@ bool hanabi::FireworkBall::draw()
 
 	if (position.isEnd())
 	{
+		if (childFireworks.empty()) {
+			const int count = Random(0, 5);
+			for (int i = 0; i < count; ++i)
+			{
+				const int index = Random(0, static_cast<int>(functions.size()) - 1);
+				const Vec2 delta = RandomVec2(Circle(end, 200));
+				childFireworks.emplace_back(XYGraph(*(functions[index]), -5.0, 5.0), delta, 10);
+			}
+		}
+
 		firework->draw();
+		for (int i = 0; i < childFireworks.size(); ++i)
+		{
+			childFireworks[i].draw();
+		}
 		return false;
 	}
 
@@ -42,3 +61,9 @@ bool hanabi::FireworkBall::isAlive() const
 {
 	return firework->isAlive();
 }
+
+const std::array<hanabi::Function*, 3> hanabi::FireworkBall::functions = {
+	new hanabi::Cos(),
+	new hanabi::Sin(),
+	new hanabi::Fraction(hanabi::Constant(1.0), hanabi::Function()),
+};
