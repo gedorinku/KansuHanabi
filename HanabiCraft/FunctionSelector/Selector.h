@@ -16,6 +16,7 @@ private:
 	double borderSize;
 	const int itemCount;
 	const double margin = 4;
+	std::vector<String> names;
 	std::vector<SP<Function::AbstractFunction>> functions;
 	double itemOriginX; //âÊñ è„Ç≈ÇÃà íu
 	int selectedIndex;
@@ -30,6 +31,8 @@ public:
 	void SetOnDrop(std::function<void(SP<Function::AbstractFunction>)> onDrop);
 
 	RoundRect GetRect(int index);
+
+	Vec2 GetCenter(int index);
 
 	void Update();
 

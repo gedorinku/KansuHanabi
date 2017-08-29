@@ -13,6 +13,10 @@ private:
 
 public:
 
+	static SP<X> Build(SP<AbstractFunction> child) {
+		return SP<X>(new X(child));
+	}
+
 	X(SP<AbstractFunction> child) : child(child) {}
 
 	// IOneArgFunction ‚ğ‰î‚µ‚ÄŒp³‚³‚ê‚Ü‚µ‚½

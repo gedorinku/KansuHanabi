@@ -8,27 +8,27 @@ namespace HanabiCraft {
 namespace Function {
 
 
-class Sin : public IOneArgFunction {
+class Tan : public IOneArgFunction {
 private:
 
 	SP<Function::AbstractFunction> child;
 
 public:
 
-	static SP<Sin> Build(SP<AbstractFunction> child) {
-		return SP<Sin>(new Sin(child));
+	static SP<Tan> Build(SP<AbstractFunction> child) {
+		return SP<Tan>(new Tan(child));
 	}
 
-	Sin(SP<Function::AbstractFunction> child = SP<AbstractFunction>(new LeafX())) : child(child) {}
+	Tan(SP<Function::AbstractFunction> child = SP<AbstractFunction>(new LeafX())) : child(child) {}
 
-	virtual double WeakEval(double x) override { return std::sin(child->Eval(x*2*Pi)); }
+	virtual double WeakEval(double x) override { return std::tan(child->Eval(x*2*Pi)); }
 
 	virtual SP<Function::AbstractFunction> GetChild() override { return child; }
 
 	virtual void SetChild(SP<Function::AbstractFunction> child) override { this->child = child; }
 
 	virtual SP<Function::AbstractFunction> Clone(SP<Function::AbstractFunction> newChild) override {
-		return SP<Function::AbstractFunction>(new Sin(newChild));
+		return SP<Function::AbstractFunction>(new Tan(newChild));
 	}
 };
 

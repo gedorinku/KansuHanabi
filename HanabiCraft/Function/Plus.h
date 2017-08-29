@@ -14,6 +14,10 @@ private:
 
 public:
 
+	static SP<Plus> Build(SP<AbstractFunction> child1, SP<AbstractFunction> child2) {
+		return SP<Plus>(new Plus(child1, child2));
+	}
+
 	Plus(SP<AbstractFunction> child1, SP<AbstractFunction> child2)
 		: child1(child1), child2(child2) {}
 

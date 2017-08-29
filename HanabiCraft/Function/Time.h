@@ -14,6 +14,10 @@ private:
 
 public:
 
+	static SP<Time> Build(SP<AbstractFunction> child1, SP<AbstractFunction> child2) {
+		return SP<Time>(new Time(child1, child2));
+	}
+
 	Time(SP<AbstractFunction> child1, SP<AbstractFunction> child2)
 		: child1(child1), child2(child2) {}
 

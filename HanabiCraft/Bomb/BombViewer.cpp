@@ -20,6 +20,7 @@ BombViewer::BombViewer(const RectF & v, SP<Function::AbstractFunction> function)
 	}
 	powders.push_back(bombs[bombIndex]);
 	resetDrawMode();
+	if (onChange) onChange(*this);
 }
 
 void BombViewer::resetDrawMode() {
@@ -64,10 +65,12 @@ void BombViewer::Update() {
 		else if (Input::KeyRight.clicked && bombIndex < bombs.size() - 1) {
 			powders = {bombs[++bombIndex]};
 			resetDrawMode();
+			if (onChange) onChange(*this);
 		}
 		else if (Input::KeyLeft.clicked && 0 < bombIndex) {
 			powders = {bombs[--bombIndex]};
 			resetDrawMode();
+			if (onChange) onChange(*this);
 		}
 	}
 	controllEnable = true;
@@ -103,6 +106,7 @@ void BombViewer::Drop(SP<Function::AbstractFunction> function) {
 	newChild->SetAllRandomColor(powderTone);
 	powders.back()->SetChild(droppedIndex, newChild);
 	resetDrawMode();
+	if (onChange) onChange(*this);
 }
 
 void BombViewer::SetOnChange(std::function<void(const BombViewer&)> onMove) {
