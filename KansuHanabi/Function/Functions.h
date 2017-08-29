@@ -5,3 +5,4 @@
 #include "Cos.h"
 #include "Fraction.h"
 #include "Constant.h"
+#include "Multiplication.h"

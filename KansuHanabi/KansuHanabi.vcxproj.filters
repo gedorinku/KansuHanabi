@@ -82,6 +82,12 @@
     <Filter Include="ヘッダー ファイル\Function">
       <UniqueIdentifier>{319e53de-17b4-4163-a7fa-eece8e8ae712}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\Graph">
+      <UniqueIdentifier>{b263344e-b5b9-46ac-8e6a-aba9af95f8af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Graph">
+      <UniqueIdentifier>{00589a4e-150e-421e-b601-776065f5e326}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -101,6 +107,39 @@
     </ClCompile>
     <ClCompile Include="Function\Cos.cpp">
       <Filter>ソース ファイル\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Function\Multiplication.cpp">
+      <Filter>ソース ファイル\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph\Graph.cpp">
+      <Filter>ソース ファイル\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Function\Minus.cpp">
+      <Filter>ソース ファイル\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Function\Summation.cpp">
+      <Filter>ソース ファイル\Function</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph\XYGraph.cpp">
+      <Filter>ソース ファイル\Graph</Filter>
+    </ClCompile>
+    <ClCompile Include="Firework.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalFirework.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="TrajectoryParticle.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="NormalFireworkParticle.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="FireworkBall.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
+    <ClCompile Include="Server.cpp">
+      <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -409,6 +448,12 @@
     <Media Include="Example\風の丘.mp3">
       <Filter>リソース ファイル\Example</Filter>
     </Media>
+    <Media Include="fireworks1.mp3">
+      <Filter>リソース ファイル</Filter>
+    </Media>
+    <Media Include="flying_hanabi.wav">
+      <Filter>リソース ファイル</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Example\YomogiFont.ttf">
@@ -433,6 +478,42 @@
     </ClInclude>
     <ClInclude Include="Function\Cos.h">
       <Filter>ヘッダー ファイル\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Function\Multiplication.h">
+      <Filter>ヘッダー ファイル\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\Graph.h">
+      <Filter>ヘッダー ファイル\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Function\Summation.h">
+      <Filter>ヘッダー ファイル\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Function\Minus.h">
+      <Filter>ヘッダー ファイル\Function</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph\XYGraph.h">
+      <Filter>ヘッダー ファイル\Graph</Filter>
+    </ClInclude>
+    <ClInclude Include="Firework.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalFirework.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="TrajectoryParticle.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="NormalFireworkParticle.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="FireworkBall.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="Server.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockingQueue.h">
+      <Filter>ソース ファイル</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

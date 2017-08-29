@@ -2,6 +2,7 @@
 #include <Siv3D.hpp>
 #include <cmath>
 #include <cstdio>
+#include <vector>
 #include <iostream>
 #include "Util.h"
 #include "Function\Sin.h"
@@ -16,7 +17,97 @@
 #include "TmpClass.h"
 #include "FunctionSelector\Selector.h"
 #include "CraftUI.h"
+#include "FireworkBall.h"
+#include "Server.h"
+#include "Graph/XYGraph.h"
 using namespace HanabiCraft;
+
+
+std::vector<SP<Function::AbstractFunction>> bombs;
+SP<Server> server;
+std::list<hanabi::FireworkBall> balls;
+
+void ViewUpdate(std::vector<SP<Function::AbstractFunction>>& bombs)
+{
+	while (!server->request_queue.empty())
+	{
+		const auto raw = server->request_queue.dequeue();
+		//Println(FromUTF8(raw));
+
+		if (raw.find("id:") == 0)
+		{
+			int id = std::stoi(raw.substr(3, raw.find("x:") - 3));
+			Vec2 pos;
+			const auto rawPos = raw.substr(raw.find("x:"));
+			const auto yIndex = rawPos.find("y:");
+			auto hoge = rawPos.substr(2, yIndex - 2);
+			const auto windowSize = Window::Size();
+			pos.x = std::stod(rawPos.substr(2, yIndex - 2)) * windowSize.x;
+			pos.y = std::stod(rawPos.substr(yIndex + 2)) * windowSize.y;
+
+			auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(bombs[id], -5.0, 5.0), pos, 50);
+			balls.emplace_back(firework, Vec2{ pos.x, 600 }, pos);
+		}
+	}
+
+	for (auto& ball : balls) {
+		ball.draw();
+	}
+
+	for (auto it = balls.begin(); it != balls.end();)
+	{
+		if (it->isAlive())
+		{
+			it++;
+			continue;
+		}
+
+		auto temp = it;
+		it++;
+		balls.erase(temp);
+	}
+
+	//font(Profiler::FPS(), L"fps").draw();
+}
+
+void Run()
+{
+	SoundAsset::Register(L"fireworks_launch", L"fireworks1.mp3");
+	SoundAsset::Register(L"fireworks_flying", L"flying_hanabi.wav");
+
+	enum Mode
+	{
+		Craft,
+		View
+	} state = Mode::Craft;
+	CraftUI craftUi(Window::ClientRect());
+
+	while (System::Update())
+	{
+		if (state == Mode::Craft)
+		{
+			craftUi.Update();
+			craftUi.Draw();
+
+			if (Input::KeyEnter.clicked)
+			{
+				state = Mode::View;
+				bombs = craftUi.GetBombs();
+				server = std::make_shared<Server>(bombs.size());
+				server->start();
+			}
+			
+		} else if (state == Mode::View)
+		{
+			ViewUpdate(bombs);
+
+			if (Input::KeySpace.clicked)
+			{
+				state = Mode::Craft;
+			}
+		}
+	}
+}
 
 void Main() {
 
@@ -32,9 +123,10 @@ void Main() {
 		GraphManager_UpdateTest,
 		Selector_UpdateTest,
 		CraftUI_UpdateTest
-	} mode = Mode::CraftUI_UpdateTest;
+	} mode = Mode::JustRun;
 
 	if (mode == JustRun) {
+		Run();
 	}
 	else if (mode == Function_PoyoTest) {
 		using namespace Function;

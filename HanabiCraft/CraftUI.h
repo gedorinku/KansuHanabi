@@ -24,6 +24,8 @@ public:
 	void Update();
 
 	void Draw();
+
+	std::vector<SP<Function::AbstractFunction>> GetBombs();
 };
 
 

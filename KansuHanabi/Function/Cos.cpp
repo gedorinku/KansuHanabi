@@ -1,9 +1,16 @@
 #include "Cos.h"
 #include <cmath>
+#include <cassert>
 
 
-double hanabi::Cos::Evaluate(double x)
+hanabi::Cos::Cos(const Cos & obj)
+	: Function(obj)
 {
-	auto inner = innerFunctions.empty() ? x : innerFunctions.front()->Evaluate(x);
+}
+
+double hanabi::Cos::evaluate(double x) const
+{
+	assert(innerFunctions.size() <= 1);
+	auto inner = innerFunctions.empty() ? x : innerFunctions.front()->evaluate(x);
 	return std::cos(inner);
 }

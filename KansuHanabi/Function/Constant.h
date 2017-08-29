@@ -9,7 +9,7 @@ namespace hanabi {
 		Constant(const Constant& obj);
 		~Constant() override = default;
 
-		double Evaluate(double x) override;
+		double evaluate(double x) const override;
 
 	private:
 		double value;

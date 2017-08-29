@@ -1,72 +1,82 @@
-﻿# include <Siv3D.hpp>
-# include "Function/Functions.h"
+﻿#include <array>
+#include <memory>
+#include <Siv3D.hpp>
+#include <array>
+#include <memory>
+#include <Siv3D.hpp>
+#include "Function/Functions.h"
+#include "NormalFirework.h"
+#include "Graph/XYGraph.h"
+#include "FireworkBall.h"
+#include "Server.h"
 
-using Function = hanabi::Function;
-
-class Hoge
-{
-public:
-	void print()
-	{
-		LOG(L"aaaa");
-	}
-};
-
-class Fuga
-{
-	Hoge hoge;
-public:
-	Fuga(Hoge&& h) : hoge(h)
-	{
-		
-	}
-
-	void print()
-	{
-		hoge.print();
-	}
-};
 
 void Main()
 {
-	Fuga fuga = Fuga(Hoge());
-	fuga.print();
-	const Font font(30);
-	std::vector<Vector2D<double>> dots;
-	constexpr double RATE = 100.0;
-	const double INF = pow(10.0, 10.0);
-	auto fun = Function::composeEmplace<hanabi::Sin>(Function::composeEmplace<hanabi::Fraction>(hanabi::Constant(1), Function::X));
-	//auto fun = hanabi::Sin();
-	//assert(fun.Evaluate(1.0) == std::cos(std::sin(1.0)));
-	for (double i = -300.0; i < 300.0; i += 0.01)
-	{
-		//dots.emplace_back(Vector2D<double>(300 + i, 250 + sin(1 / (i / 220.0)) * 220.0));
-		dots.emplace_back(Vector2D<double>(300 + i, 300 - fun.Evaluate(i / RATE) * RATE));
-	}
+	SoundAsset::Register(L"fireworks_launch", L"fireworks1.mp3");
+	SoundAsset::Register(L"fireworks_flying", L"flying_hanabi.wav");
 
-	std::vector<std::pair<Circle, Color>> hanabi;
-	for (int i = 0; i < dots.size(); ++i)
-	{
-		if (Random(400) != 0) continue;
-		hanabi.emplace_back(std::make_pair(Circle(dots[i], 2.0), RandomColor()));
-	}
+	Window::Resize(1920, 1200);
+	const Font font(30);
+	std::array<hanabi::Function*, 5> functions = {
+		new hanabi::Cos(),
+		new hanabi::Sin(),
+		new hanabi::Fraction(hanabi::Constant(1.0), hanabi::Function::X),
+		new hanabi::Fraction(hanabi::Sin(), hanabi::Cos()),
+		new hanabi::Sin(hanabi::Function::composeEmplace<hanabi::Sin>(
+			hanabi::Fraction(hanabi::Constant(1.0), hanabi::Function::X)
+			))
+	};
+	Server server(5);
+	server.start();
+	std::list<hanabi::FireworkBall> balls;
 
 	while (System::Update())
 	{
-		//font(L"ようこそ、Siv3D の世界へ！").draw();
-
-		//Circle(Mouse::Pos(), 50).draw({255, 0, 0, 127});
-
-		for (int i = 0; i < dots.size(); ++i)
+		while (!server.request_queue.empty())
 		{
-			if (INF < abs(dots[i].y)) continue;
-			//Line(dots[i], dots[i]).draw();
-			dots[i].draw();
+			const auto raw = server.request_queue.dequeue();
+			Println(FromUTF8(raw));
+
+			if (raw.find("id:") == 0)
+			{
+				Vec2 pos;
+				const auto rawPos = raw.substr(raw.find("x:"));
+				const auto yIndex = rawPos.find("y:");
+				auto hoge = rawPos.substr(2, yIndex - 2);
+				const auto windowSize = Window::Size();
+				pos.x = std::stod(rawPos.substr(2, yIndex - 2)) * windowSize.x;
+				pos.y = std::stod(rawPos.substr(yIndex + 2)) * windowSize.y;
+
+				auto index = Random(0, ((int)functions.size()) - 1);
+				auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(*(functions[index]), -5.0, 5.0), pos, 50);
+				balls.emplace_back(firework, Vec2{ pos.x, 600 }, pos);
+			}
 		}
 
-		for (auto dot : hanabi)
-		{
-			//dot.first.draw(dot.second);
+		if (Input::MouseL.clicked) {
+			auto index = Random(0, ((int)functions.size()) - 1);
+			auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(*(functions[index]), -5.0, 5.0), Mouse::Pos(), 50);
+			balls.emplace_back(firework, Vec2{ Mouse::Pos().x, 600 }, Mouse::Pos());
 		}
+
+		for (auto& ball : balls) {
+			ball.draw();
+		}
+
+		for (auto it = balls.begin(); it != balls.end();)
+		{
+			if (it->isAlive())
+			{
+				it++;
+				continue;
+			}
+
+			auto temp = it;
+			it++;
+			balls.erase(temp);
+		}
+
+		font(Profiler::FPS(), L"fps").draw();
 	}
 }

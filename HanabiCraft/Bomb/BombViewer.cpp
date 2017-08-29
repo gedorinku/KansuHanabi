@@ -127,5 +127,14 @@ void BombViewer::SetBomb(int index, SP<Function::AbstractFunction> bomb) {
 }
 
 
+	std::vector<SP<Function::AbstractFunction>> BombViewer::GetBombs()
+	{
+		std::vector<SP<AbstractFunction>> ret;
+		for (int i = 0; i < bombs.size(); i++)
+		{
+			ret.push_back(bombs[i]->GetFunction()->DeepClone());
+		}
+		return ret;
+	}
 }
 }

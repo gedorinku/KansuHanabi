@@ -40,5 +40,8 @@ void CraftUI::Draw() {
 	graphArea->Draw();
 }
 
-
+	std::vector<SP<Function::AbstractFunction>> CraftUI::GetBombs()
+	{
+		return bombViewer->GetBombs();
+	}
 }

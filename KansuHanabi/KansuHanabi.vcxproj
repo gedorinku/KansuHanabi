@@ -28,7 +28,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
@@ -71,22 +71,22 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SIV3D_20160812)\Inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)HanabiCraft;$(SIV3D_20160812)\Inc;$(IncludePath)</IncludePath>
     <LibraryPath>$(SIV3D_20160812)\Lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(SIV3D_20160812)\Inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)HanabiCraft;$(SIV3D_20160812)\Inc;$(IncludePath)</IncludePath>
     <LibraryPath>$(SIV3D_20160812)\Lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SIV3D_20160812)\Inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)HanabiCraft;$(SIV3D_20160812)\Inc;$(IncludePath)</IncludePath>
     <LibraryPath>$(SIV3D_20160812)\Lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(SIV3D_20160812)\Inc;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)HanabiCraft;$(SIV3D_20160812)\Inc;$(IncludePath)</IncludePath>
     <LibraryPath>$(SIV3D_20160812)\Lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -99,6 +99,7 @@
       <SDLCheck>true</SDLCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)HanabiCraft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -115,6 +116,7 @@
       <SDLCheck>true</SDLCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)HanabiCraft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -133,6 +135,7 @@
       <SDLCheck>true</SDLCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)HanabiCraft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -153,6 +156,7 @@
       <SDLCheck>true</SDLCheck>
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>$(SolutionDir)HanabiCraft;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -162,12 +166,23 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Firework.cpp" />
+    <ClCompile Include="FireworkBall.cpp" />
     <ClCompile Include="Function\Constant.cpp" />
     <ClCompile Include="Function\Cos.cpp" />
     <ClCompile Include="Function\Fraction.cpp" />
     <ClCompile Include="Function\Function.cpp" />
+    <ClCompile Include="Function\Minus.cpp" />
+    <ClCompile Include="Function\Multiplication.cpp" />
     <ClCompile Include="Function\Sin.cpp" />
+    <ClCompile Include="Function\Summation.cpp" />
+    <ClCompile Include="Graph\Graph.cpp" />
+    <ClCompile Include="Graph\XYGraph.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="NormalFirework.cpp" />
+    <ClCompile Include="NormalFireworkParticle.cpp" />
+    <ClCompile Include="Server.cpp" />
+    <ClCompile Include="TrajectoryParticle.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Resource.rc" />
@@ -277,17 +292,31 @@
   <ItemGroup>
     <Media Include="Example\Sound.mp3" />
     <Media Include="Example\風の丘.mp3" />
+    <Media Include="fireworks1.mp3" />
+    <Media Include="flying_hanabi.wav" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Example\YomogiFont.ttf" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BlockingQueue.h" />
+    <ClInclude Include="Firework.h" />
+    <ClInclude Include="FireworkBall.h" />
     <ClInclude Include="Function\Constant.h" />
     <ClInclude Include="Function\Cos.h" />
     <ClInclude Include="Function\Fraction.h" />
     <ClInclude Include="Function\Function.h" />
     <ClInclude Include="Function\Functions.h" />
+    <ClInclude Include="Function\Minus.h" />
+    <ClInclude Include="Function\Multiplication.h" />
     <ClInclude Include="Function\Sin.h" />
+    <ClInclude Include="Function\Summation.h" />
+    <ClInclude Include="Graph\Graph.h" />
+    <ClInclude Include="Graph\XYGraph.h" />
+    <ClInclude Include="NormalFirework.h" />
+    <ClInclude Include="NormalFireworkParticle.h" />
+    <ClInclude Include="Server.h" />
+    <ClInclude Include="TrajectoryParticle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -8,6 +8,7 @@
 #include "Function\Log.h"
 #include "Function\Time.h"
 #include "Function\Abs.h"
+#include "../Function/Sin.h"
 
 namespace HanabiCraft {
 namespace FunctionSelector {
@@ -38,7 +39,7 @@ Selector::Selector(const RectF & v)
 	functions[3] = Time::Build(LeafX::Build(), LeafX::Build());
 
 	names[4] = L"‚³‚¢‚ñ";
-	functions[4] = Sin::Build(LeafX::Build());
+	functions[4] = Function::Sin::Build(LeafX::Build());
 
 	names[5] = L"‚½‚ñ";
 	functions[5] = Tan::Build(LeafX::Build());
