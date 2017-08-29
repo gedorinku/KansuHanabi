@@ -45,6 +45,8 @@ bool hanabi::FireworkBall::draw()
 	if (!launched)
 	{
 		launched = true;
+		SoundAsset(L"fireworks_launch").playMulti();
+		SoundAsset(L"fireworks_flying").playMulti();
 		position.start();
 	}
 

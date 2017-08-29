@@ -13,6 +13,9 @@
 
 void Main()
 {
+	SoundAsset::Register(L"fireworks_launch", L"fireworks1.mp3");
+	SoundAsset::Register(L"fireworks_flying", L"flying_hanabi.wav");
+
 	Window::Resize(1920, 1200);
 	const Font font(30);
 	std::array<hanabi::Function*, 5> functions = {

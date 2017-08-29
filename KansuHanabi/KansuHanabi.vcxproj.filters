@@ -451,6 +451,12 @@
     <Media Include="Example\風の丘.mp3">
       <Filter>リソース ファイル\Example</Filter>
     </Media>
+    <Media Include="fireworks1.mp3">
+      <Filter>リソース ファイル</Filter>
+    </Media>
+    <Media Include="flying_hanabi.wav">
+      <Filter>リソース ファイル</Filter>
+    </Media>
   </ItemGroup>
   <ItemGroup>
     <Font Include="Example\YomogiFont.ttf">

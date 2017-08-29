@@ -289,6 +289,8 @@
   <ItemGroup>
     <Media Include="Example\Sound.mp3" />
     <Media Include="Example\風の丘.mp3" />
+    <Media Include="fireworks1.mp3" />
+    <Media Include="flying_hanabi.wav" />
   </ItemGroup>
   <ItemGroup>
     <Font Include="Example\YomogiFont.ttf" />
