@@ -61,22 +61,22 @@ GraphManager::GraphManager(double x,
 						   17*_UTIL_KUSOCONST,
 						   195*_UTIL_KUSOCONST,
 						   188*_UTIL_KUSOCONST);
-		downButtonX = RectF((747 + 269)*_UTIL_KUSOCONST,
+		downButtonY = RectF((747 + 269)*_UTIL_KUSOCONST,
 							109*_UTIL_KUSOCONST,
-							downXTex.width*_UTIL_KUSOCONST,
-							downXTex.height*_UTIL_KUSOCONST);
-		upButtonX = RectF((747 + 269)*_UTIL_KUSOCONST,
-						  11*_UTIL_KUSOCONST,
-						  upXTex.width*_UTIL_KUSOCONST,
-						  upXTex.height*_UTIL_KUSOCONST);
-		downButtonY = RectF((894 + 269)*_UTIL_KUSOCONST,
-							210*_UTIL_KUSOCONST,
 							downYTex.width*_UTIL_KUSOCONST,
 							downYTex.height*_UTIL_KUSOCONST);
-		upButtonY = RectF((792 + 269)*_UTIL_KUSOCONST,
-						  210*_UTIL_KUSOCONST,
+		upButtonY = RectF((747 + 269)*_UTIL_KUSOCONST,
+						  11*_UTIL_KUSOCONST,
 						  upYTex.width*_UTIL_KUSOCONST,
 						  upYTex.height*_UTIL_KUSOCONST);
+		upButtonX = RectF((894 + 269)*_UTIL_KUSOCONST,
+							210*_UTIL_KUSOCONST,
+							upXTex.width*_UTIL_KUSOCONST,
+							upXTex.height*_UTIL_KUSOCONST);
+		downButtonX = RectF((792 + 269)*_UTIL_KUSOCONST,
+						  210*_UTIL_KUSOCONST,
+						  downXTex.width*_UTIL_KUSOCONST,
+						  downXTex.height*_UTIL_KUSOCONST);
 	}
 }
 
