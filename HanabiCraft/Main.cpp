@@ -46,7 +46,7 @@ void ViewUpdate(std::vector<SP<Function::AbstractFunction>>& bombs)
 			pos.y = std::stod(rawPos.substr(yIndex + 2)) * windowSize.y;
 
 			auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(bombs[id], -5.0, 5.0), pos, 50);
-			balls.emplace_back(firework, Vec2{ pos.x, 600 }, pos);
+			balls.emplace_back(firework, Vec2{ pos.x, Window::Size().y }, pos);
 		}
 	}
 
