@@ -31,7 +31,10 @@ public:
 		for each (const SP<AbstractFunction> &var in GetChildren()) {
 			newChildren.push_back(var->DeepClone());
 		}
-		return Clone(newChildren);
+		auto res = Clone(newChildren);
+		res->rate = this->rate;
+		res->translation = this->translation;
+		return res;
 	}
 
 	double Eval(double x) {
