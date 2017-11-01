@@ -22,8 +22,7 @@
 #include "Graph/XYGraph.h"
 using namespace HanabiCraft;
 
-const int HanabiCount = 1;
-int frameCount;
+int HanabiCount = 1;
 
 
 std::vector<SP<Function::AbstractFunction>> bombs;
@@ -32,8 +31,7 @@ std::list<hanabi::FireworkBall> balls;
 
 void ViewUpdate(std::vector<SP<Function::AbstractFunction>>& bombs)
 {
-	if (frameCount++ >= 6) {
-		frameCount = 0;
+	if (RandomBool(1/30.0)) {
 		int index = Random()*HanabiCount;
 		Vec2 pos = Vec2(Window::Width()*Random(), Window::Height()*Random());
 		auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(bombs[index], -1.0, 1.0), pos, 50);
@@ -55,7 +53,7 @@ void ViewUpdate(std::vector<SP<Function::AbstractFunction>>& bombs)
 			pos.x = std::stod(rawPos.substr(2, yIndex - 2)) * windowSize.x;
 			pos.y = std::stod(rawPos.substr(yIndex + 2)) * windowSize.y;
 
-			auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(bombs[id], -1.0, 1.0), pos, 50);
+			auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(bombs[id], -1.0, 1.0), pos, 150);
 			balls.emplace_back(firework, Vec2{ pos.x, Window::Size().y }, pos);
 		}
 	}
@@ -92,7 +90,6 @@ void Run()
 	} state = Mode::Craft;
 	CraftUI craftUi(Window::ClientRect());
 
-	frameCount = 0;
 	while (System::Update())
 	{
 		if (state == Mode::Craft)

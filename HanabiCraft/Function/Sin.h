@@ -1,5 +1,5 @@
 #pragma once
-#include "IOneArgFunction.h"
+#include "OneArgFunction.h"
 #include "LeafX.h"
 #include <cmath>
 #include <Siv3D.hpp>
@@ -8,7 +8,7 @@ namespace HanabiCraft {
 namespace Function {
 
 
-class Sin : public IOneArgFunction {
+class Sin : public OneArgFunction {
 private:
 
 	SP<Function::AbstractFunction> child;

@@ -6,12 +6,12 @@ namespace HanabiCraft {
 namespace Bomb {
 
 
-OneArgPowder::OneArgPowder(SP<Function::IOneArgFunction> function,
+OneArgPowder::OneArgPowder(SP<Function::OneArgFunction> function,
 						   SP<AbstractGunPowder> child)
 	: function(function)
 	, child(child) {}
 
-SP<OneArgPowder> OneArgPowder::Build(SP<IOneArgFunction> function) {
+SP<OneArgPowder> OneArgPowder::Build(SP<OneArgFunction> function) {
 	auto child = PowderBuilder(function->GetChild()).Build();
 	return SP<OneArgPowder>(new OneArgPowder(function, child));
 }

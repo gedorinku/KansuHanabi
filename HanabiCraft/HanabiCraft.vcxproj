@@ -301,6 +301,7 @@
     <ClCompile Include="NormalFireworkParticle.cpp" />
     <ClCompile Include="Scale2D.cpp" />
     <ClCompile Include="Server.cpp" />
+    <ClCompile Include="SilentFireworkBall.cpp" />
     <ClCompile Include="TmpClass.cpp" />
     <ClCompile Include="TrajectoryParticle.cpp" />
   </ItemGroup>
@@ -321,7 +322,7 @@
     <ClInclude Include="FunctionSelector\Selector.h" />
     <ClInclude Include="Function\Abs.h" />
     <ClInclude Include="Function\AbstractFunction.h" />
-    <ClInclude Include="Function\IOneArgFunction.h" />
+    <ClInclude Include="Function\OneArgFunction.h" />
     <ClInclude Include="Function\LeafX.h" />
     <ClInclude Include="Function\Log.h" />
     <ClInclude Include="Function\Plus.h" />
@@ -341,6 +342,7 @@
     <ClInclude Include="NormalFireworkParticle.h" />
     <ClInclude Include="Scale2D.h" />
     <ClInclude Include="Server.h" />
+    <ClInclude Include="SilentFireworkBall.h" />
     <ClInclude Include="TmpClass.h" />
     <ClInclude Include="TrajectoryParticle.h" />
     <ClInclude Include="Util.h" />

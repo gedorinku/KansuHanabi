@@ -9,7 +9,7 @@ namespace Bomb {
 
 
 PowderWrapper::PowderWrapper(SP<Function::AbstractFunction> content)
-	: OneArgPowder(*OneArgPowder::Build(SP<Function::IOneArgFunction>(new Function::X(content)))) {
+	: OneArgPowder(*OneArgPowder::Build(SP<Function::OneArgFunction>(new Function::X(content)))) {
 	SetDrawMode(AbstractGunPowder::DrawMode::None);
 }
 

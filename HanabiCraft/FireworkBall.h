@@ -30,6 +30,9 @@ namespace hanabi {
 		s3d::Vec2 start;
 		s3d::Vec2 end;
 
+	protected:
+		virtual void playSound();
+
 		//static const std::array<Function*, 3> functions;
 	};
 

@@ -6,7 +6,7 @@ namespace HanabiCraft {
 namespace Function {
 
 
-class IOneArgFunction : public AbstractFunction {
+class OneArgFunction : public AbstractFunction {
 public:
 
 	virtual SP<AbstractFunction> GetChild() = 0;

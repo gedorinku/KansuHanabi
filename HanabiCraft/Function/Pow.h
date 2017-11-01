@@ -1,5 +1,5 @@
 #pragma once
-#include "IOneArgFunction.h"
+#include "OneArgFunction.h"
 #include "LeafX.h"
 #include <cmath>
 
@@ -8,7 +8,7 @@ namespace Function {
 
 
 template<int N>
-class Pow : public IOneArgFunction {
+class Pow : public OneArgFunction {
 private:
 
 	SP<Function::AbstractFunction> child;

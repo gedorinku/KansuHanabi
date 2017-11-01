@@ -1,12 +1,12 @@
 #pragma once
-#include "IOneArgFunction.h"
+#include "OneArgFunction.h"
 #include "AbstractFunction.h"
 
 namespace HanabiCraft {
 namespace Function {
 
 
-class X : public IOneArgFunction {
+class X : public OneArgFunction {
 private:
 
 	SP<AbstractFunction> child;

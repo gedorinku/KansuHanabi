@@ -1,5 +1,5 @@
 #include "PowderBuilder.h"
-#include "Function\IOneArgFunction.h"
+#include "Function\OneArgFunction.h"
 #include "OneArgPowder.h"
 #include "LeafXPowder.h"
 #include "Function\LeafX.h"
@@ -16,7 +16,7 @@ PowderBuilder::PowderBuilder(SP<AbstractFunction> function) : function(function)
 //TODO: イカした設計とコード #とは
 SP<AbstractGunPowder> PowderBuilder::Build() {
 	{
-		auto p = std::dynamic_pointer_cast<IOneArgFunction>(function);
+		auto p = std::dynamic_pointer_cast<OneArgFunction>(function);
 		if (p) return OneArgPowder::Build(p);
 	}
 	{

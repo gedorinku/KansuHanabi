@@ -2,7 +2,7 @@
 #include "Util.h"
 #include <vector>
 #include "AbstractGunPowder.h"
-#include "Function\IOneArgFunction.h"
+#include "Function\OneArgFunction.h"
 #include "Function\AbstractFunction.h"
 #include <Siv3D.hpp>
 
@@ -13,10 +13,10 @@ namespace Bomb {
 class OneArgPowder : public AbstractGunPowder {
 private:
 
-	SP<Function::IOneArgFunction> function;
+	SP<Function::OneArgFunction> function;
 	SP<AbstractGunPowder> child;
 
-	OneArgPowder(SP<Function::IOneArgFunction> function, SP<AbstractGunPowder> child);
+	OneArgPowder(SP<Function::OneArgFunction> function, SP<AbstractGunPowder> child);
 
 	//virtual double WeakEval(double x) override;
 
@@ -24,7 +24,7 @@ private:
 
 public:
 
-	static SP<OneArgPowder> Build(SP<Function::IOneArgFunction> function);
+	static SP<OneArgPowder> Build(SP<Function::OneArgFunction> function);
 
 	// IOneArgFunction ÇâÓÇµÇƒåpè≥Ç≥ÇÍÇ‹ÇµÇΩ
 	//virtual SP<AbstractFunction> GetChild() override;
