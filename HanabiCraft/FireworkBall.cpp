@@ -27,7 +27,10 @@ bool hanabi::FireworkBall::draw()
 	if (!launched)
 	{
 		launched = true;
-		playSound();
+		if (!isSilent) {
+			SoundAsset(L"fireworks_launch").playMulti();
+			SoundAsset(L"fireworks_flying").playMulti();
+		}
 		position.start();
 	}
 
@@ -43,9 +46,4 @@ bool hanabi::FireworkBall::draw()
 bool hanabi::FireworkBall::isAlive() const
 {
 	return firework->isAlive();
-}
-
-void hanabi::FireworkBall::playSound() {
-	SoundAsset(L"fireworks_launch").playMulti();
-	SoundAsset(L"fireworks_flying").playMulti();
 }

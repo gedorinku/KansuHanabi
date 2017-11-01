@@ -12,6 +12,8 @@ namespace hanabi {
 	class FireworkBall
 	{
 	public:
+		bool isSilent = false;
+
 		template <class T>
 		FireworkBall(const T& firework, const s3d::Vec2& start, const s3d::Vec2& end);
 		~FireworkBall();
@@ -29,9 +31,6 @@ namespace hanabi {
 		bool blasted;
 		s3d::Vec2 start;
 		s3d::Vec2 end;
-
-	protected:
-		virtual void playSound();
 
 		//static const std::array<Function*, 3> functions;
 	};

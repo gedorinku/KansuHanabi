@@ -36,6 +36,7 @@ void ViewUpdate(std::vector<SP<Function::AbstractFunction>>& bombs)
 		Vec2 pos = Vec2(Window::Width()*Random(), Window::Height()*Random());
 		auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(bombs[index], -1.0, 1.0), pos, 50);
 		balls.emplace_back(firework, Vec2{pos.x, Window::Height()}, pos);
+		balls.back().isSilent = true;
 	}
 	while (!server->request_queue.empty())
 	{
