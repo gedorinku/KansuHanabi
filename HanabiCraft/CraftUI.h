@@ -26,6 +26,8 @@ public:
 	void Draw();
 
 	std::vector<SP<Function::AbstractFunction>> GetBombs();
+
+	int GetSelectedBombIndex() const;
 };
 
 

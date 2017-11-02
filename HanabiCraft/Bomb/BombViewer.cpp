@@ -136,5 +136,9 @@ void BombViewer::SetBomb(int index, SP<Function::AbstractFunction> bomb) {
 		}
 		return ret;
 	}
+	int BombViewer::GetSelectedIndex() const
+	{
+		return bombIndex;
+	}
 }
 }

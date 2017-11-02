@@ -38,7 +38,15 @@ void ViewUpdate(std::vector<SP<Function::AbstractFunction>>& bombs)
 		balls.emplace_back(firework, Vec2{pos.x, Window::Height()}, pos);
 		balls.back().isSilent = true;
 	}
-	while (!server->request_queue.empty())
+	auto generateFirework = [&](SP<Function::AbstractFunction> bomb, Vec2 pos, int size) {
+		auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(bomb, -1.0, 1.0), pos, size);
+		balls.emplace_back(firework, Vec2{ pos.x, Window::Size().y }, pos);
+	};
+	if (Input::MouseL.clicked) {
+		int id = std::max(HanabiCount - 1, (int)(Random()*HanabiCount));
+		generateFirework(bombs[id], Mouse::Pos(), 150);
+	}
+	else while (!server->request_queue.empty())
 	{
 		const auto raw = server->request_queue.dequeue();
 		//Println(FromUTF8(raw));
@@ -54,8 +62,7 @@ void ViewUpdate(std::vector<SP<Function::AbstractFunction>>& bombs)
 			pos.x = std::stod(rawPos.substr(2, yIndex - 2)) * windowSize.x;
 			pos.y = std::stod(rawPos.substr(yIndex + 2)) * windowSize.y;
 
-			auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(bombs[id], -1.0, 1.0), pos, 150);
-			balls.emplace_back(firework, Vec2{ pos.x, Window::Size().y }, pos);
+			generateFirework(bombs[id], pos, 150);
 		}
 	}
 
@@ -102,6 +109,7 @@ void Run()
 			{
 				state = Mode::View;
 				bombs = craftUi.GetBombs();
+				HanabiCount = craftUi.GetSelectedBombIndex() + 1;
 				server = std::make_shared<Server>(bombs.size());
 				server->start();
 			}

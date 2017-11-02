@@ -45,6 +45,8 @@ public:
 	void SetBomb(int index, SP<Function::AbstractFunction> bomb);
 
 	std::vector<SP<Function::AbstractFunction>> GetBombs();
+
+	int GetSelectedIndex() const;
 };
 
 

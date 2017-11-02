@@ -44,4 +44,8 @@ void CraftUI::Draw() {
 	{
 		return bombViewer->GetBombs();
 	}
+	int CraftUI::GetSelectedBombIndex() const
+	{
+		return bombViewer->GetSelectedIndex();
+	}
 }
