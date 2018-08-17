@@ -31,13 +31,6 @@ std::list<hanabi::FireworkBall> balls;
 
 void ViewUpdate(std::vector<SP<Function::AbstractFunction>>& bombs)
 {
-	if (RandomBool(1/30.0)) {
-		int index = Random()*HanabiCount;
-		Vec2 pos = Vec2(Window::Width()*Random(), Window::Height()*Random());
-		auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(bombs[index], -1.0, 1.0), pos, 50);
-		balls.emplace_back(firework, Vec2{pos.x, Window::Height()}, pos);
-		balls.back().isSilent = true;
-	}
 	auto generateFirework = [&](SP<Function::AbstractFunction> bomb, Vec2 pos, int size) {
 		auto&& firework = hanabi::NormalFirework(hanabi::XYGraph(bomb, -1.0, 1.0), pos, size);
 		balls.emplace_back(firework, Vec2{ pos.x, Window::Size().y }, pos);
